@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC7CE3662872C6A6004D9DD8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BC7CE3652872C6A6004D9DD8 /* Alamofire */; };
+		BC7CE3692872C6BC004D9DD8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BC7CE3682872C6BC004D9DD8 /* Kingfisher */; };
+		BC7CE36D2872C6EC004D9DD8 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = BC7CE36C2872C6EC004D9DD8 /* PKHUD */; };
+		BC7CE3702872C706004D9DD8 /* Instantiate in Frameworks */ = {isa = PBXBuildFile; productRef = BC7CE36F2872C706004D9DD8 /* Instantiate */; };
+		BC7CE3722872C706004D9DD8 /* InstantiateStandard in Frameworks */ = {isa = PBXBuildFile; productRef = BC7CE3712872C706004D9DD8 /* InstantiateStandard */; };
 		BCCA1C622872C08D006B3493 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA1C612872C08D006B3493 /* AppDelegate.swift */; };
 		BCCA1C642872C08D006B3493 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA1C632872C08D006B3493 /* SceneDelegate.swift */; };
 		BCCA1C662872C08D006B3493 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA1C652872C08D006B3493 /* ViewController.swift */; };
@@ -56,6 +61,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC7CE36D2872C6EC004D9DD8 /* PKHUD in Frameworks */,
+				BC7CE3692872C6BC004D9DD8 /* Kingfisher in Frameworks */,
+				BC7CE3722872C706004D9DD8 /* InstantiateStandard in Frameworks */,
+				BC7CE3662872C6A6004D9DD8 /* Alamofire in Frameworks */,
+				BC7CE3702872C706004D9DD8 /* Instantiate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +153,13 @@
 			dependencies = (
 			);
 			name = "SwiftConcurrencyTest-MVP";
+			packageProductDependencies = (
+				BC7CE3652872C6A6004D9DD8 /* Alamofire */,
+				BC7CE3682872C6BC004D9DD8 /* Kingfisher */,
+				BC7CE36C2872C6EC004D9DD8 /* PKHUD */,
+				BC7CE36F2872C706004D9DD8 /* Instantiate */,
+				BC7CE3712872C706004D9DD8 /* InstantiateStandard */,
+			);
 			productName = "SwiftConcurrencyTest-MVP";
 			productReference = BCCA1C5E2872C08D006B3493 /* SwiftConcurrencyTest-MVP.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +232,13 @@
 				Base,
 			);
 			mainGroup = BCCA1C552872C08D006B3493;
+			packageReferences = (
+				BC7CE3642872C6A6004D9DD8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				BC7CE3672872C6BC004D9DD8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				BC7CE36A2872C6CF004D9DD8 /* XCRemoteSwiftPackageReference "Instantiate" */,
+				BC7CE36B2872C6EC004D9DD8 /* XCRemoteSwiftPackageReference "PKHUD" */,
+				BC7CE36E2872C706004D9DD8 /* XCRemoteSwiftPackageReference "Instantiate" */,
+			);
 			productRefGroup = BCCA1C5F2872C08D006B3493 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -602,6 +626,77 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BC7CE3642872C6A6004D9DD8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire#installation";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		BC7CE3672872C6BC004D9DD8 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		BC7CE36A2872C6CF004D9DD8 /* XCRemoteSwiftPackageReference "Instantiate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tarunon/Instantiate";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		BC7CE36B2872C6EC004D9DD8 /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pkluz/PKHUD";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		BC7CE36E2872C706004D9DD8 /* XCRemoteSwiftPackageReference "Instantiate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tarunon/Instantiate";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BC7CE3652872C6A6004D9DD8 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC7CE3642872C6A6004D9DD8 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		BC7CE3682872C6BC004D9DD8 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC7CE3672872C6BC004D9DD8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		BC7CE36C2872C6EC004D9DD8 /* PKHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC7CE36B2872C6EC004D9DD8 /* XCRemoteSwiftPackageReference "PKHUD" */;
+			productName = PKHUD;
+		};
+		BC7CE36F2872C706004D9DD8 /* Instantiate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC7CE36A2872C6CF004D9DD8 /* XCRemoteSwiftPackageReference "Instantiate" */;
+			productName = Instantiate;
+		};
+		BC7CE3712872C706004D9DD8 /* InstantiateStandard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC7CE36A2872C6CF004D9DD8 /* XCRemoteSwiftPackageReference "Instantiate" */;
+			productName = InstantiateStandard;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BCCA1C562872C08D006B3493 /* Project object */;
 }
