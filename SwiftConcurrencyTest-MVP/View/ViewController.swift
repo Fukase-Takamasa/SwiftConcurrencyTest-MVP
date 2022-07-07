@@ -8,6 +8,8 @@
 import UIKit
 import Combine
 import PKHUD
+//import Instantiate
+//import InstantiateStandard
 
 class ViewController: UIViewController {
     private var presenter: Presenter?
@@ -23,7 +25,12 @@ class ViewController: UIViewController {
         
         //PresenterのListenerに自身を代入
         presenter = Presenter(listener: self)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        //TODO: - windowが生成されてから処理を行うようにディレクトリを修正してviewDidLoadに移動
         //PresenterにAPI叩く処理を依頼
         presenter?.getArticles()
     }
@@ -55,6 +62,6 @@ extension ViewController: PresenterInterface {
     }
     
     func isFetching(_ flag: Bool) {
-//        flag ? HUD.show(.progress) : HUD.hide()
+        flag ? HUD.show(.progress) : HUD.hide()
     }
 }

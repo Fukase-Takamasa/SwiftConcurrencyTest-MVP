@@ -24,6 +24,7 @@ class Presenter {
     init(listener: PresenterInterface) {
         self.listener = listener
         
+        //Storeに格納されたレスポンスを監視
         Store.shard.articlesResponse
             .sink { element in
                 print("presenter articlesResponse: \(String(describing: element))")
