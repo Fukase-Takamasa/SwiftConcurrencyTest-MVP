@@ -7,8 +7,10 @@
 
 import UIKit
 import Combine
+import PKHUD
 
 class ViewController: UIViewController {
+    private var presenter: Presenter?
     private var articles: [Article] = []
     private var cancellables = [AnyCancellable]()
 
@@ -19,28 +21,40 @@ class ViewController: UIViewController {
         
         tableView.register(UINib(nibName: ArticleCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: ArticleCell.reusableIdentifier)
         
-        Repository.getArticles()
-        Store.shard.articlesResponse
-            .sink { [weak self] element in
-                guard let self = self else { return }
-                guard let articles = element else { return }
-                self.articles = articles
-                self.tableView.reloadData()
-                print("vc articlesResponse: \(articles)")
-            }.store(in: &cancellables)
+        //PresenterのListenerに自身を代入
+        presenter = Presenter(listener: self)
+        
+        //PresenterにAPI叩く処理を依頼
+        presenter?.getArticles()
     }
 
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return articles.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.reusableIdentifier, for: indexPath) as! ArticleCell
         cell.titleLabel.text = articles[indexPath.row].title
         cell.userNameLabel.text = articles[indexPath.row].user.name
         return cell
     }
+}
+
+//PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
+extension ViewController: PresenterInterface {
+    func successResponse(articles: [Article]) {
+        self.articles = articles
+        self.tableView.reloadData()
+    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articles.count
+    func errorResponse(error: Error) {
+        
+    }
+    
+    func isFetching(_ flag: Bool) {
+//        flag ? HUD.show(.progress) : HUD.hide()
     }
 }
