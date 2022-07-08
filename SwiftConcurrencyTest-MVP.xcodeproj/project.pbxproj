@@ -120,6 +120,17 @@
 			path = CustomClass;
 			sourceTree = "<group>";
 		};
+		BC6CFCCB2878585400441CA8 /* ArticleList */ = {
+			isa = PBXGroup;
+			children = (
+				BC6CFCC328784EDC00441CA8 /* ArticleListViewController.swift */,
+				BC6CFCC528784EFF00441CA8 /* ArticleListViewController.storyboard */,
+				BC7CE39F2872E554004D9DD8 /* ArticleCell.swift */,
+				BC7CE3A02872E554004D9DD8 /* ArticleCell.xib */,
+			);
+			path = ArticleList;
+			sourceTree = "<group>";
+		};
 		BC7CE3832872D0ED004D9DD8 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,10 +160,7 @@
 			children = (
 				BC6CFCC728784FF600441CA8 /* MainTabBarController.swift */,
 				BCCA1C672872C08D006B3493 /* Main.storyboard */,
-				BC6CFCC328784EDC00441CA8 /* ArticleListViewController.swift */,
-				BC6CFCC528784EFF00441CA8 /* ArticleListViewController.storyboard */,
-				BC7CE39F2872E554004D9DD8 /* ArticleCell.swift */,
-				BC7CE3A02872E554004D9DD8 /* ArticleCell.xib */,
+				BC6CFCCB2878585400441CA8 /* ArticleList */,
 			);
 			path = View;
 			sourceTree = "<group>";

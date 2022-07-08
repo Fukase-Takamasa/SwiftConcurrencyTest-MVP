@@ -23,13 +23,6 @@ class ArticleListViewController: UIViewController, StoryboardInstantiatable {
         
         //PresenterのListenerに自身を代入
         presenter = Presenter(listener: self)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        //TODO: - windowが生成されてから処理を行うようにディレクトリを修正してviewDidLoadに移動
-        //PresenterにAPI叩く処理を依頼
         presenter?.getArticles()
     }
 
