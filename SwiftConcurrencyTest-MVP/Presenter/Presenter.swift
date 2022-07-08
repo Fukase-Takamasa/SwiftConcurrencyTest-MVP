@@ -44,6 +44,8 @@ class Presenter {
         listener?.isFetching(true)
         
         //API叩く（結果はStoreに格納される）
-        Repository.getArticles()
+        Task {
+            try await Repository.getArticles()
+        }
     }
 }
