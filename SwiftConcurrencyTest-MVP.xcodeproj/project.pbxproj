@@ -12,6 +12,7 @@
 		BC6CFCC628784EFF00441CA8 /* ArticleListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6CFCC528784EFF00441CA8 /* ArticleListViewController.storyboard */; };
 		BC6CFCC828784FF600441CA8 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6CFCC728784FF600441CA8 /* MainTabBarController.swift */; };
 		BC765EE4287D838F0025A3B3 /* Extension+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC765EE3287D838F0025A3B3 /* Extension+Storyboard.swift */; };
+		BC765EE6287D8DF50025A3B3 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC765EE5287D8DF50025A3B3 /* UIViewController+Extension.swift */; };
 		BC7CE3662872C6A6004D9DD8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BC7CE3652872C6A6004D9DD8 /* Alamofire */; };
 		BC7CE3692872C6BC004D9DD8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BC7CE3682872C6BC004D9DD8 /* Kingfisher */; };
 		BC7CE36D2872C6EC004D9DD8 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = BC7CE36C2872C6EC004D9DD8 /* PKHUD */; };
@@ -59,6 +60,7 @@
 		BC6CFCC528784EFF00441CA8 /* ArticleListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticleListViewController.storyboard; sourceTree = "<group>"; };
 		BC6CFCC728784FF600441CA8 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		BC765EE3287D838F0025A3B3 /* Extension+Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Storyboard.swift"; sourceTree = "<group>"; };
+		BC765EE5287D8DF50025A3B3 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		BC7CE3882872D1E4004D9DD8 /* Articles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
 		BC7CE38A2872D2D7004D9DD8 /* QiitaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaAPI.swift; sourceTree = "<group>"; };
 		BC7CE38D2872D31F004D9DD8 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				BC765EE3287D838F0025A3B3 /* Extension+Storyboard.swift */,
+				BC765EE5287D8DF50025A3B3 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				BC7CE3892872D1E4004D9DD8 /* Articles.swift in Sources */,
 				BC6CFCC828784FF600441CA8 /* MainTabBarController.swift in Sources */,
 				BC6CFCC228783F9A00441CA8 /* CustomError.swift in Sources */,
+				BC765EE6287D8DF50025A3B3 /* UIViewController+Extension.swift in Sources */,
 				BCCA1C622872C08D006B3493 /* AppDelegate.swift in Sources */,
 				BC7CE3922872D31F004D9DD8 /* APIConst.swift in Sources */,
 				BCCA1C642872C08D006B3493 /* SceneDelegate.swift in Sources */,

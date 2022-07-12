@@ -9,12 +9,18 @@ import UIKit
 import Instantiate
 import InstantiateStandard
 import PKHUD
+import Kingfisher
 
 class ArticleListViewController: UIViewController, StoryboardInstantiatable {
     private var presenter: Presenter?
     private var articles: [Article] = []
 
     @IBOutlet weak var tableView: UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        dismissCellHighlight(tableView: tableView)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +30,7 @@ class ArticleListViewController: UIViewController, StoryboardInstantiatable {
         //PresenterのListenerに自身を代入
         presenter = Presenter(listener: self)
         presenter?.getAuthorizedUser()
-        presenter?.getArticles()
+        presenter?.getMonthlyPupularArticles()
     }
 
 }
@@ -35,7 +41,9 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let article = articles[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.reusableIdentifier, for: indexPath) as! ArticleCell
+        cell.userIconImageView.kf.setImage(with: URL(string: article.user.profileImageUrl ?? ""))
         cell.titleLabel.text = articles[indexPath.row].title
         cell.userNameLabel.text = articles[indexPath.row].user.name
         return cell
@@ -44,11 +52,11 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
 
 //PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
 extension ArticleListViewController: PresenterInterface {
-    func authorizedUserResponse(user: AuthorizedUser) {
+    func authorizedUserResponse(user: User) {
        
     }
     
-    func articlesResponse(articles: [Article]) {
+    func monthlyPopularArticlesResponse(articles: [Article]) {
         self.articles = articles
         self.tableView.reloadData()
     }

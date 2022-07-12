@@ -13,11 +13,11 @@ struct Article: Codable {
 }
 
 struct User: Codable {
-    var name: String
-    var id: String
-    var description: String
-    var location: String
-    var profileImageUrl: String
+    var name: String?
+    var id: String?
+    var description: String?
+    var location: String?
+    var profileImageUrl: String?
     
     enum CodingKeys: String, CodingKey {
         case name
