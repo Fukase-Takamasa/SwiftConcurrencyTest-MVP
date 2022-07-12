@@ -37,12 +37,16 @@ final class Repository {
     }
 
     static func getMonthlyPupularArticles() async throws {
-        let parameters = [
-            "created": "2022-07-12",
-            "likes": ">10",
+        let parameters: Parameters = [
+            "page": "1",
+            "per_page": "10",
+            "query": "tag:iOS created:>2017-01-01 stocks:>100"
         ]
+        
         let task = AF.request(QiitaAPI.getArticles(queryParameters: parameters)).serializingDecodable([Article].self)
         let response = await task.response
+        print("url: \(String(describing: response.request))")
+
         switch (response.response?.statusCode ?? 0) {
             //200~299を正常系とみなし、それ以外はErrorをthrow
         case 200...299:

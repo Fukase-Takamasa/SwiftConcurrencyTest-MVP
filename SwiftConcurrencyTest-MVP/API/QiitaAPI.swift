@@ -11,7 +11,7 @@ import Alamofire
 enum QiitaAPI: URLRequestConvertible {
     
     case getAuthorizedUser
-    case getArticles(queryParameters: [String: String]?)
+    case getArticles(queryParameters: Parameters?)
     
     func asURLRequest() throws -> URLRequest {
         let url = try APIConst.BASE_URL.asURL()
@@ -51,7 +51,7 @@ enum QiitaAPI: URLRequestConvertible {
         }
     }
     
-    private var parameters: [String: String]? {
+    private var parameters: Parameters? {
         switch self {
         case .getAuthorizedUser:
             return [:]
