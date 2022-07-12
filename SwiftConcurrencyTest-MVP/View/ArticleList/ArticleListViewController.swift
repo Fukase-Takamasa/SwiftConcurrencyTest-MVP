@@ -10,9 +10,10 @@ import Instantiate
 import InstantiateStandard
 import PKHUD
 import Kingfisher
+import CombineCocoa
 
 class ArticleListViewController: UIViewController, StoryboardInstantiatable {
-    private var presenter: Presenter?
+    private var presenter: ArticleListPresenter?
     private var articles: [Article] = []
 
     @IBOutlet weak var tableView: UITableView!
@@ -28,7 +29,7 @@ class ArticleListViewController: UIViewController, StoryboardInstantiatable {
         tableView.register(UINib(nibName: ArticleCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: ArticleCell.reusableIdentifier)
         
         //PresenterのListenerに自身を代入
-        presenter = Presenter(listener: self)
+        presenter = ArticleListPresenter(listener: self)
         presenter?.getAuthorizedUser()
         presenter?.getMonthlyPupularArticles()
     }
@@ -46,12 +47,28 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.userIconImageView.kf.setImage(with: URL(string: article.user.profileImageUrl ?? ""))
         cell.titleLabel.text = articles[indexPath.row].title
         cell.userNameLabel.text = articles[indexPath.row].user.name
+        
+        cell.favoriteButton.tapPublisher
+            .sink { [weak self] element in
+                guard let self = self else { return }
+
+            }.store(in: &cell.cancellables)
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let article = articles[indexPath.row]
+        let vc = ArticleDetailViewController.instantiate()
+        let presenter = ArticleDetailPresenter(listener: vc, articleUrl: URL(string: article.url))
+        vc.presenter = presenter
+        self.navigationController?.title = "記事詳細"
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 //PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
-extension ArticleListViewController: PresenterInterface {
+extension ArticleListViewController: ArticleListPresenterInterface {
     func authorizedUserResponse(user: User) {
        
     }

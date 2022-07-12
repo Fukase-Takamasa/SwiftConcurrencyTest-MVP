@@ -1,5 +1,5 @@
 //
-//  Presenter.swift
+//  ArticleListPresenter.swift
 //  SwiftConcurrencyTest-MVP
 //
 //  Created by ウルトラ深瀬 on 4/7/22.
@@ -8,21 +8,21 @@
 import Foundation
 import Combine
 
-protocol PresenterInterface: AnyObject {
+protocol ArticleListPresenterInterface: AnyObject {
     func authorizedUserResponse(user: User)
     func monthlyPopularArticlesResponse(articles: [Article])
     func errorResponse(error: Error)
     func isFetching(_ flag : Bool)
 }
 
-class Presenter {
-    private weak var listener: PresenterInterface?
+class ArticleListPresenter {
+    private weak var listener: ArticleListPresenterInterface?
     private var cancellables = [AnyCancellable]()
     
     
     //MARK: - output（PresenterからListenerの処理を呼び出す）
     //このPresenterのインターフェースに準拠した抽象的なListener（VC）を注入する
-    init(listener: PresenterInterface) {
+    init(listener: ArticleListPresenterInterface) {
         self.listener = listener
         
         //Storeに格納されたレスポンスを監視

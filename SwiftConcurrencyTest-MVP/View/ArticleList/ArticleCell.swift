@@ -11,7 +11,7 @@ import InstantiateStandard
 import Combine
 
 class ArticleCell: UITableViewCell, Reusable {
-    private var cancellables = [AnyCancellable]()
+    var cancellables = [AnyCancellable]()
     
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var userIconImageView: UIImageView!
