@@ -9,7 +9,8 @@ import Foundation
 import Combine
 
 protocol PresenterInterface: AnyObject {
-    func successResponse(articles: [Article])
+    func authorizedUserResponse(user: AuthorizedUser)
+    func articlesResponse(articles: [Article])
     func errorResponse(error: Error)
     func isFetching(_ flag : Bool)
 }
@@ -25,13 +26,22 @@ class Presenter {
         self.listener = listener
         
         //Storeに格納されたレスポンスを監視
+        Store.shard.authorizedUserResponse
+            .sink { element in
+                print("presenter authorizedUserResponse: \(String(describing: element))")
+                guard let user = element else { return }
+                
+                //成功レスポンスを受け渡して処理をさせる
+                listener.authorizedUserResponse(user: user)
+            }.store(in: &cancellables)
+        
         Store.shard.articlesResponse
             .sink { element in
                 print("presenter articlesResponse: \(String(describing: element))")
                 guard let articles = element else { return }
                 
                 //成功レスポンスを受け渡して処理をさせる
-                listener.successResponse(articles: articles)
+                listener.articlesResponse(articles: articles)
                 
                 //インジケータ非表示
                 listener.isFetching(false)
@@ -39,6 +49,13 @@ class Presenter {
     }
     
     //MARK: - input（ListenerからPresenterの処理を呼び出す）
+    func getAuthorizedUser() {
+        //API叩く（結果はStoreに格納される）
+        Task {
+            try await Repository.getAuthorizedUser()
+        }
+    }
+    
     func getArticles() {
         //インジケータ表示
         listener?.isFetching(true)

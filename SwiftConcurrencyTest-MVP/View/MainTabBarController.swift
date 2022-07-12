@@ -22,7 +22,7 @@ class MainTabBarController: UITabBarController {
         
         guard let firstVC = firstVC, let secondVC = secondVC else {return}
         
-        firstVC.tabBarItem = UITabBarItem(title: "一覧", image: UIImage(systemName: "news"), tag: 0)
+        firstVC.tabBarItem = UITabBarItem(title: "一覧", image: UIImage(systemName: "newspaper"), tag: 0)
         
         secondVC.tabBarItem = UITabBarItem(title: "お気に入り", image: UIImage(systemName: "heart"), tag: 1)
         

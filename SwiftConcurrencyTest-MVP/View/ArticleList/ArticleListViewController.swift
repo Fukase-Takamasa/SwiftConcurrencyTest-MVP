@@ -23,6 +23,7 @@ class ArticleListViewController: UIViewController, StoryboardInstantiatable {
         
         //PresenterのListenerに自身を代入
         presenter = Presenter(listener: self)
+        presenter?.getAuthorizedUser()
         presenter?.getArticles()
     }
 
@@ -43,7 +44,11 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
 
 //PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
 extension ArticleListViewController: PresenterInterface {
-    func successResponse(articles: [Article]) {
+    func authorizedUserResponse(user: AuthorizedUser) {
+       
+    }
+    
+    func articlesResponse(articles: [Article]) {
         self.articles = articles
         self.tableView.reloadData()
     }
