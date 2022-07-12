@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 protocol PresenterInterface: AnyObject {
-    func authorizedUserResponse(user: AuthorizedUser)
-    func articlesResponse(articles: [Article])
+    func authorizedUserResponse(user: User)
+    func monthlyPopularArticlesResponse(articles: [Article])
     func errorResponse(error: Error)
     func isFetching(_ flag : Bool)
 }
@@ -41,7 +41,7 @@ class Presenter {
                 guard let articles = element else { return }
                 
                 //成功レスポンスを受け渡して処理をさせる
-                listener.articlesResponse(articles: articles)
+                listener.monthlyPopularArticlesResponse(articles: articles)
                 
                 //インジケータ非表示
                 listener.isFetching(false)
@@ -56,13 +56,13 @@ class Presenter {
         }
     }
     
-    func getArticles() {
+    func getMonthlyPupularArticles() {
         //インジケータ表示
         listener?.isFetching(true)
         
         //API叩く（結果はStoreに格納される）
         Task {
-            try await Repository.getArticles()
+            try await Repository.getMonthlyPupularArticles()
         }
     }
 }

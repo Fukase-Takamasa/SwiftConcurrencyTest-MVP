@@ -11,7 +11,7 @@ import Combine
 class Store {
     static var shard = Store()
     
-    var authorizedUserResponse: AnyPublisher<AuthorizedUser?, Never> {
+    var authorizedUserResponse: AnyPublisher<User?, Never> {
         return authorizedUserResponseSubject.eraseToAnyPublisher()
     }
 
@@ -23,7 +23,7 @@ class Store {
         return errorSubject.eraseToAnyPublisher()
     }
     
-    var authorizedUserResponseSubject = CurrentValueSubject<AuthorizedUser?, Never>(nil)
+    var authorizedUserResponseSubject = CurrentValueSubject<User?, Never>(nil)
     var articlesResponseSubject = CurrentValueSubject<[Article]?, Never>(nil)
     var errorSubject = PassthroughSubject<Error, Never>()
 }

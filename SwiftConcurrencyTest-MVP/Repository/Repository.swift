@@ -14,7 +14,7 @@ final class Repository {
     private static let store = Store.shard
     
     static func getAuthorizedUser() async throws {
-        let task = AF.request(QiitaAPI.getAuthorizedUser).serializingDecodable(AuthorizedUser.self)
+        let task = AF.request(QiitaAPI.getAuthorizedUser).serializingDecodable(User.self)
         let response = await task.response
         print("statusCode: \(response.response?.statusCode ?? 0)")
         switch (response.response?.statusCode ?? 0) {
@@ -36,8 +36,12 @@ final class Repository {
         }
     }
 
-    static func getArticles() async throws {
-        let task = AF.request(QiitaAPI.getArticles).serializingDecodable([Article].self)
+    static func getMonthlyPupularArticles() async throws {
+        let parameters = [
+            "created": "2022-07-12",
+            "likes": ">10",
+        ]
+        let task = AF.request(QiitaAPI.getArticles(queryParameters: parameters)).serializingDecodable([Article].self)
         let response = await task.response
         switch (response.response?.statusCode ?? 0) {
             //200~299を正常系とみなし、それ以外はErrorをthrow

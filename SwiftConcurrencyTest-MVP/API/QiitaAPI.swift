@@ -11,7 +11,7 @@ import Alamofire
 enum QiitaAPI: URLRequestConvertible {
     
     case getAuthorizedUser
-    case getArticles
+    case getArticles(queryParameters: [String: String]?)
     
     func asURLRequest() throws -> URLRequest {
         let url = try APIConst.BASE_URL.asURL()
@@ -51,21 +51,16 @@ enum QiitaAPI: URLRequestConvertible {
         }
     }
     
-    private var parameters: Parameters? {
+    private var parameters: [String: String]? {
         switch self {
         case .getAuthorizedUser:
             return [:]
-        case .getArticles:
-            return [:]
+        case .getArticles(let parameters):
+            return parameters
         }
     }
     
     private var headers: HTTPHeaders {
-        switch self {
-        case .getAuthorizedUser:
-            return ["Authorization": "Bearer \(Const.personalAccessToken)"]
-        case .getArticles:
-            return [:]
-        }
+        return ["Authorization": "Bearer \(Const.personalAccessToken)"]
     }
 }

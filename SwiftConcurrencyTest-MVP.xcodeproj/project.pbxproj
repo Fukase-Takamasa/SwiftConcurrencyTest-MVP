@@ -11,7 +11,7 @@
 		BC6CFCC428784EDC00441CA8 /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6CFCC328784EDC00441CA8 /* ArticleListViewController.swift */; };
 		BC6CFCC628784EFF00441CA8 /* ArticleListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6CFCC528784EFF00441CA8 /* ArticleListViewController.storyboard */; };
 		BC6CFCC828784FF600441CA8 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6CFCC728784FF600441CA8 /* MainTabBarController.swift */; };
-		BC765EE2287D6ED70025A3B3 /* AuthorizedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC765EE1287D6ED70025A3B3 /* AuthorizedUser.swift */; };
+		BC765EE4287D838F0025A3B3 /* Extension+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC765EE3287D838F0025A3B3 /* Extension+Storyboard.swift */; };
 		BC7CE3662872C6A6004D9DD8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BC7CE3652872C6A6004D9DD8 /* Alamofire */; };
 		BC7CE3692872C6BC004D9DD8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BC7CE3682872C6BC004D9DD8 /* Kingfisher */; };
 		BC7CE36D2872C6EC004D9DD8 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = BC7CE36C2872C6EC004D9DD8 /* PKHUD */; };
@@ -21,7 +21,6 @@
 		BC7CE38B2872D2D7004D9DD8 /* QiitaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7CE38A2872D2D7004D9DD8 /* QiitaAPI.swift */; };
 		BC7CE3912872D31F004D9DD8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7CE38D2872D31F004D9DD8 /* Const.swift */; };
 		BC7CE3922872D31F004D9DD8 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7CE38E2872D31F004D9DD8 /* APIConst.swift */; };
-		BC7CE3932872D31F004D9DD8 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7CE3902872D31F004D9DD8 /* View+Extension.swift */; };
 		BC7CE3992872D854004D9DD8 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7CE3972872D854004D9DD8 /* Store.swift */; };
 		BC7CE39E2872DDBA004D9DD8 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7CE39D2872DDBA004D9DD8 /* Repository.swift */; };
 		BC7CE3A12872E554004D9DD8 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7CE39F2872E554004D9DD8 /* ArticleCell.swift */; };
@@ -59,12 +58,11 @@
 		BC6CFCC328784EDC00441CA8 /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 		BC6CFCC528784EFF00441CA8 /* ArticleListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticleListViewController.storyboard; sourceTree = "<group>"; };
 		BC6CFCC728784FF600441CA8 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		BC765EE1287D6ED70025A3B3 /* AuthorizedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizedUser.swift; sourceTree = "<group>"; };
+		BC765EE3287D838F0025A3B3 /* Extension+Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Storyboard.swift"; sourceTree = "<group>"; };
 		BC7CE3882872D1E4004D9DD8 /* Articles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
 		BC7CE38A2872D2D7004D9DD8 /* QiitaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaAPI.swift; sourceTree = "<group>"; };
 		BC7CE38D2872D31F004D9DD8 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		BC7CE38E2872D31F004D9DD8 /* APIConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConst.swift; sourceTree = "<group>"; };
-		BC7CE3902872D31F004D9DD8 /* View+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		BC7CE3972872D854004D9DD8 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		BC7CE39D2872DDBA004D9DD8 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		BC7CE39F2872E554004D9DD8 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 		BC7CE3832872D0ED004D9DD8 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				BC765EE1287D6ED70025A3B3 /* AuthorizedUser.swift */,
 				BC7CE3882872D1E4004D9DD8 /* Articles.swift */,
 			);
 			path = Entity;
@@ -180,7 +177,7 @@
 		BC7CE38F2872D31F004D9DD8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				BC7CE3902872D31F004D9DD8 /* View+Extension.swift */,
+				BC765EE3287D838F0025A3B3 /* Extension+Storyboard.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -409,16 +406,15 @@
 				BC7CE3892872D1E4004D9DD8 /* Articles.swift in Sources */,
 				BC6CFCC828784FF600441CA8 /* MainTabBarController.swift in Sources */,
 				BC6CFCC228783F9A00441CA8 /* CustomError.swift in Sources */,
-				BC7CE3932872D31F004D9DD8 /* View+Extension.swift in Sources */,
 				BCCA1C622872C08D006B3493 /* AppDelegate.swift in Sources */,
 				BC7CE3922872D31F004D9DD8 /* APIConst.swift in Sources */,
 				BCCA1C642872C08D006B3493 /* SceneDelegate.swift in Sources */,
 				BC7CE3A42872F1C2004D9DD8 /* Presenter.swift in Sources */,
 				BC7CE38B2872D2D7004D9DD8 /* QiitaAPI.swift in Sources */,
+				BC765EE4287D838F0025A3B3 /* Extension+Storyboard.swift in Sources */,
 				BC7CE39E2872DDBA004D9DD8 /* Repository.swift in Sources */,
 				BC7CE3992872D854004D9DD8 /* Store.swift in Sources */,
 				BC7CE3912872D31F004D9DD8 /* Const.swift in Sources */,
-				BC765EE2287D6ED70025A3B3 /* AuthorizedUser.swift in Sources */,
 				BC7CE3A12872E554004D9DD8 /* ArticleCell.swift in Sources */,
 				BC6CFCC428784EDC00441CA8 /* ArticleListViewController.swift in Sources */,
 			);
