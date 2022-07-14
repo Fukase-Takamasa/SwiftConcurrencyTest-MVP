@@ -13,7 +13,7 @@ import Alamofire
 final class Repository {
     private static let store = Store.shard
     
-    static func getAuthorizedUser() async throws {
+    static func getAuthorizedUser() async throws -> User? {
         let task = AF.request(QiitaAPI.getAuthorizedUser).serializingDecodable(User.self)
         let response = await task.response
         print("statusCode: \(response.response?.statusCode ?? 0)")
@@ -24,6 +24,9 @@ final class Repository {
             print("getAuthorizedUser success value: \(String(describing: value))")
             //成功レスポンスから取り出した値をStoreに格納
             store.authorizedUserResponseSubject.send(value)
+            
+            //呼び出し元にも値を返却
+            return value
             
             //Alamofireのエラーがあれば返し、なければカスタムエラーを返す
         default:
@@ -45,7 +48,6 @@ final class Repository {
         
         let task = AF.request(QiitaAPI.getArticles(queryParameters: parameters)).serializingDecodable([Article].self)
         let response = await task.response
-        print("url: \(String(describing: response.request))")
 
         switch (response.response?.statusCode ?? 0) {
             //200~299を正常系とみなし、それ以外はErrorをthrow

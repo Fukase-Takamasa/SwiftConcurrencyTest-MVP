@@ -34,13 +34,14 @@
                             <constraint firstItem="nOf-Wb-CXF" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="tUF-G1-PNJ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="rJ4-s5-vyt"/>
                     <connections>
                         <outlet property="tableView" destination="nOf-Wb-CXF" id="05y-xW-6mY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23" y="98"/>
+            <point key="canvasLocation" x="886.95652173913049" y="97.767857142857139"/>
         </scene>
     </scenes>
     <resources>

@@ -30,7 +30,7 @@ class ArticleListViewController: UIViewController, StoryboardInstantiatable {
         
         //PresenterのListenerに自身を代入
         presenter = ArticleListPresenter(listener: self)
-        presenter?.getAuthorizedUser()
+//        presenter?.getAuthorizedUser()
         presenter?.getMonthlyPupularArticles()
     }
 
@@ -39,6 +39,10 @@ class ArticleListViewController: UIViewController, StoryboardInstantiatable {
 extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return articles.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,7 +66,6 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
         let vc = ArticleDetailViewController.instantiate()
         let presenter = ArticleDetailPresenter(listener: vc, articleUrl: URL(string: article.url))
         vc.presenter = presenter
-        self.navigationController?.title = "記事詳細"
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

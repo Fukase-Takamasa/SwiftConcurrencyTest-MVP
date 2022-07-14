@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Combine
 
 extension UIViewController {
     
@@ -44,24 +43,4 @@ extension UIViewController {
             return false
         }
     }
-    
-//    func setFaqButton(cancellables: [AnyCancellable]) {
-//        let faqButton = UIButton(frame: CGRect(x: .zero, y: .zero, width: 40, height: 40))
-//        faqButton.setImage(UIImage(named: "kurasel_icon_FAQ"), for: .normal)
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: faqButton)
-//
-//        let _ = faqButton.tap
-////            .subscribe(onNext:{ [weak self] _ in
-////            guard let self = self else {return}
-////            let url = "https://mec-c.zendesk.com/hc/ja/categories/360004705894-FAQ"
-////            let vc = SFSafariViewController(url: URL(string: url)!)
-////            vc.dismissButtonStyle = .close
-////            self.present(vc, animated: true, completion: nil)
-////        }).disposed(by: disposeBag)
-//            .sink { [weak self] element in
-//                guard let self = self else { return }
-//
-//            }.store(in: &cancellables)
-//    }
-    
 }
