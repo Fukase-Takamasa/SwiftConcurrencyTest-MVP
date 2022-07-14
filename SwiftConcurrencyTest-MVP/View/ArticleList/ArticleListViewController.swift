@@ -15,6 +15,7 @@ import CombineCocoa
 class ArticleListViewController: UIViewController, StoryboardInstantiatable {
     private var presenter: ArticleListPresenter?
     private var articles: [Article] = []
+    private var lgtmUsersModelsOfEachArticles: [LgtmUsersModel] = []
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -55,7 +56,11 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.userIconImageView.kf.setImage(with: URL(string: article.user.profileImageUrl ?? ""), placeholder: placeHolderImage)
         cell.titleLabel.text = articles[indexPath.row].title
         cell.userNameLabel.text = articles[indexPath.row].user.name
-        cell.lgtmUsers = [article.user, article.user, article.user]
+        
+        let lgtmUsersModel = lgtmUsersModelsOfEachArticles.first(where: { item in
+            return item.articleId == article.id
+        })
+        cell.lgtmUsersModel = lgtmUsersModel
         cell.collectionView.reloadData()
         
         cell.favoriteButton.tapPublisher
@@ -80,6 +85,11 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
 extension ArticleListViewController: ArticleListPresenterInterface {
     func monthlyPopularArticlesResponse(articles: [Article]) {
         self.articles = articles
+        self.tableView.reloadData()
+    }
+    
+    func lgtmUsersOfEachArticlesResponse(lgtmUsersModelsOfEachArticles: [LgtmUsersModel]) {
+        self.lgtmUsersModelsOfEachArticles = lgtmUsersModelsOfEachArticles
         self.tableView.reloadData()
     }
     

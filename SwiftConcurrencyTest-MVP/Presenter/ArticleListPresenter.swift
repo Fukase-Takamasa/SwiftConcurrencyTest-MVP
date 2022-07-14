@@ -10,6 +10,7 @@ import Combine
 
 protocol ArticleListPresenterInterface: AnyObject {
     func monthlyPopularArticlesResponse(articles: [Article])
+    func lgtmUsersOfEachArticlesResponse(lgtmUsersModelsOfEachArticles: [LgtmUsersModel])
     func errorResponse(error: Error)
     func isFetching(_ flag : Bool)
 }
@@ -40,10 +41,13 @@ class ArticleListPresenter {
                 Task {
                     print("=== getLgtmUsersOfEachArticles開始 ===")
                     
-                    let LgtmUsersOfEachArticles = try await ArticleListUtil.getLgtmUsersOfEachArticles(articles: articles)
+                    let lgtmUsersModelsOfEachArticles = try await ArticleListUtil.getLgtmUsersOfEachArticles(articles: articles)
                     
-                    print("LgtmUsersOfEachArticles: \(LgtmUsersOfEachArticles)")
+                    print("lgtmUsersModelsOfEachArticles: \(lgtmUsersModelsOfEachArticles)")
                     print("=== getLgtmUsersOfEachArticles完了 ===")
+                    
+                    //成功レスポンスを受け渡して処理をさせる
+                    listener.lgtmUsersOfEachArticlesResponse(lgtmUsersModelsOfEachArticles: lgtmUsersModelsOfEachArticles)
                 }
             }.store(in: &cancellables)
     }

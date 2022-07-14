@@ -12,7 +12,7 @@ import Combine
 
 class ArticleCell: UITableViewCell, Reusable {
     var cancellables = [AnyCancellable]()
-    var lgtmUsers = [User]()
+    var lgtmUsersModel: LgtmUsersModel?
     
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var userIconImageView: UIImageView!
@@ -69,17 +69,17 @@ extension ArticleCell: UICollectionViewDelegateFlowLayout {
 
 extension ArticleCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return lgtmUsers.count
+        return lgtmUsersModel?.lgtms.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let systemImageConfig = UIImage.SymbolConfiguration(pointSize: 32, weight: .regular, scale: .default)
         let placeHolderImage = UIImage(systemName: "person.crop.circle", withConfiguration: systemImageConfig)
         
-        let user = lgtmUsers[indexPath.row]
+        let lgtm = lgtmUsersModel?.lgtms[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LgtmUserListCell.reusableIdentifier, for: indexPath) as! LgtmUserListCell
         cell.imageView.image = placeHolderImage
-        cell.imageView.kf.setImage(with: URL(string: user.profileImageUrl ?? ""), placeholder: placeHolderImage)
+        cell.imageView.kf.setImage(with: URL(string: lgtm?.user.profileImageUrl ?? ""), placeholder: placeHolderImage)
         return cell
     }
 }
