@@ -39,7 +39,7 @@ final class Repository {
         }
     }
 
-    static func getPopularIosArticles() async throws {
+    static func getPopularIosArticles() async throws -> [Article]? {
         let parameters: Parameters = [
             "page": "1",
             "per_page": "10",
@@ -56,6 +56,9 @@ final class Repository {
             print("getPopularIosArticles success value: \(String(describing: value))")
             //成功レスポンスから取り出した値をStoreに格納
             store.popularIosArticlesResponseSubject.send(value)
+            
+            //呼び出し元にも値を返却
+            return value
             
             //Alamofireのエラーがあれば返し、なければカスタムエラーを返す
         default:
@@ -82,10 +85,7 @@ final class Repository {
         case 200...299:
             let value = response.value
             print("getLgtmUsers success value: \(String(describing: value))")
-            //成功レスポンスから取り出した値をStoreに格納
-            store.lgtmUsersResponseSubject.send(value)
-            
-            //呼び出し元にも値を返却
+            //呼び出し元に値を返却
             return value
             
             //Alamofireのエラーがあれば返し、なければカスタムエラーを返す
@@ -97,5 +97,30 @@ final class Repository {
             print("getLgtmUsers response error: \(afError)")
             throw afError
         }
+    }
+    
+    //一覧記事それぞれに紐づくLGTMユーザーリストを並行取得する（可変個数TaskでのTask.group並行処理）
+    static func getLgtmUsersOfEachArticles(articles: [Article]) async throws -> [LgtmUsersModel] {
+        try await withThrowingTaskGroup(of: (LgtmUsersModel).self, body: { group in
+            for (articleId, likesCount) in articles.map({ ($0.id, $0.likesCount) }) {
+                group.addTask {
+                    let lgtmUsers = try await getLgtmUsers(articleId: articleId) ?? []
+                    //必要なキーを足した独自のModel構造体に差し替えて返却
+                    return LgtmUsersModel(articleId: articleId,
+                                          totalLgtmCount: likesCount,
+                                          lgtms: lgtmUsers)
+                }
+            }
+            var lgtmUsersModels = [LgtmUsersModel]()
+            for try await taskResult in group {
+                lgtmUsersModels.append(taskResult)
+            }
+            
+            //成功レスポンスから取り出した値をStoreに格納
+            store.lgtmUsersModelsResponseSubject.send(lgtmUsersModels)
+            
+            //呼び出し元にも値を返却
+            return lgtmUsersModels
+        })
     }
 }

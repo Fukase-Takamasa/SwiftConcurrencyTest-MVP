@@ -24,32 +24,6 @@ class ArticleListPresenter {
     //このPresenterのインターフェースに準拠した抽象的なListener（VC）を注入する
     init(listener: ArticleListPresenterInterface) {
         self.listener = listener
-        
-        //Storeに格納されたレスポンスを監視
-        Store.shard.popularIosArticlesResponseSubject
-            .sink { element in
-                print("presenter articlesResponse: \(String(describing: element))")
-                guard let articles = element else { return }
-                
-                //成功レスポンスを受け渡して処理をさせる
-                listener.monthlyPopularArticlesResponse(articles: articles)
-                
-                //インジケータ非表示
-                listener.isFetching(false)
-                
-                //取得した各記事のLGTMユーザーリストを非同期で並行取得する
-                Task {
-                    print("=== getLgtmUsersOfEachArticles開始 ===")
-                    
-                    let lgtmUsersModelsOfEachArticles = try await ArticleListUtil.getLgtmUsersOfEachArticles(articles: articles)
-                    
-                    print("lgtmUsersModelsOfEachArticles: \(lgtmUsersModelsOfEachArticles)")
-                    print("=== getLgtmUsersOfEachArticles完了 ===")
-                    
-                    //成功レスポンスを受け渡して処理をさせる
-                    listener.lgtmUsersOfEachArticlesResponse(lgtmUsersModelsOfEachArticles: lgtmUsersModelsOfEachArticles)
-                }
-            }.store(in: &cancellables)
     }
     
     //MARK: - input（ListenerからPresenterの処理を呼び出す）
@@ -59,7 +33,26 @@ class ArticleListPresenter {
         
         //API叩く（結果はStoreに格納される）
         Task {
-            try await Repository.getPopularIosArticles()
+            let articles = try await Repository.getPopularIosArticles()
+            
+            guard let articles = articles else { return }
+            
+            //成功レスポンスを受け渡して処理をさせる
+            listener?.monthlyPopularArticlesResponse(articles: articles)
+            
+            //インジケータ非表示
+            listener?.isFetching(false)
+            
+            //取得した各記事のLGTMユーザーリストを非同期で並行取得する
+            print("=== getLgtmUsersOfEachArticles開始 ===")
+            
+            let lgtmUsersModelsOfEachArticles = try await Repository.getLgtmUsersOfEachArticles(articles: articles)
+            
+            print("lgtmUsersModelsOfEachArticles: \(lgtmUsersModelsOfEachArticles)")
+            print("=== getLgtmUsersOfEachArticles完了 ===")
+            
+            //成功レスポンスを受け渡して処理をさせる
+            listener?.lgtmUsersOfEachArticlesResponse(lgtmUsersModelsOfEachArticles: lgtmUsersModelsOfEachArticles)
         }
     }
 }
