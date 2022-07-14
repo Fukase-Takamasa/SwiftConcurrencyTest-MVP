@@ -34,13 +34,13 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqQ-h9-Pz7">
-                                <rect key="frame" x="64" y="16" width="273" height="21.5"/>
+                                <rect key="frame" x="64" y="16" width="273" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVc-Qm-KjA">
-                                <rect key="frame" x="64" y="45.5" width="273" height="22"/>
+                                <rect key="frame" x="64" y="54" width="273" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="0wk-vy-hfd"/>
                                 </constraints>
@@ -61,14 +61,17 @@
                                 </buttonConfiguration>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LGTM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Oc-Y3-7Ml">
-                                <rect key="frame" x="66" y="88.5" width="33.5" height="14.5"/>
+                                <rect key="frame" x="66" y="93" width="33.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vYr-Ca-Hum">
-                                <rect key="frame" x="103.5" y="75.5" width="233.5" height="40.5"/>
+                                <rect key="frame" x="103.5" y="84" width="233.5" height="32"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="OEy-PB-Xmk"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0ER-B6-gF8">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -125,6 +128,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="baseView" destination="SaO-Fs-87H" id="5Zm-t3-BOd"/>
+                <outlet property="collectionView" destination="vYr-Ca-Hum" id="ncW-8n-Ux9"/>
                 <outlet property="favoriteButton" destination="kod-oZ-JWD" id="utb-Sb-atM"/>
                 <outlet property="titleLabel" destination="fqQ-h9-Pz7" id="zyE-Ea-rma"/>
                 <outlet property="userIconImageView" destination="zAP-FP-7XJ" id="3VX-9w-ZeG"/>

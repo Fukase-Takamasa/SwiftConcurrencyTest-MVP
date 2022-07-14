@@ -55,6 +55,8 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.userIconImageView.kf.setImage(with: URL(string: article.user.profileImageUrl ?? ""), placeholder: placeHolderImage)
         cell.titleLabel.text = articles[indexPath.row].title
         cell.userNameLabel.text = articles[indexPath.row].user.name
+        cell.lgtmUsers = [article.user, article.user, article.user]
+        cell.collectionView.reloadData()
         
         cell.favoriteButton.tapPublisher
             .sink { [weak self] element in
