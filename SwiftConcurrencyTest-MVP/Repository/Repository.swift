@@ -68,8 +68,8 @@ final class Repository {
         }
     }
     
-    static func getLgtmUsers(articleId: Int) async throws -> [LGTM]? {
-        let task = AF.request(QiitaAPI.getAuthorizedUser).serializingDecodable([LGTM].self)
+    static func getLgtmUsers(articleId: String) async throws -> [LGTM]? {
+        let task = AF.request(QiitaAPI.getLgtmUsers(articleId: articleId)).serializingDecodable([LGTM].self)
         let response = await task.response
         print("statusCode: \(response.response?.statusCode ?? 0)")
         switch (response.response?.statusCode ?? 0) {

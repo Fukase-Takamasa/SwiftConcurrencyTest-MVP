@@ -35,6 +35,16 @@ class ArticleListPresenter {
                 
                 //インジケータ非表示
                 listener.isFetching(false)
+                
+                //取得した各記事のLGTMユーザーリストを非同期で並行取得する
+                Task {
+                    print("=== getLgtmUsersOfEachArticles開始 ===")
+                    
+                    let LgtmUsersOfEachArticles = try await ArticleListUtil.getLgtmUsersOfEachArticles(articles: articles)
+                    
+                    print("LgtmUsersOfEachArticles: \(LgtmUsersOfEachArticles)")
+                    print("=== getLgtmUsersOfEachArticles完了 ===")
+                }
             }.store(in: &cancellables)
     }
     

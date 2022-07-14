@@ -12,7 +12,7 @@ enum QiitaAPI: URLRequestConvertible {
     
     case getAuthorizedUser
     case getArticles(queryParameters: Parameters?)
-    case getLgtmUsers(articleId: Int)
+    case getLgtmUsers(articleId: String)
     
     func asURLRequest() throws -> URLRequest {
         let url = try APIConst.BASE_URL.asURL()
