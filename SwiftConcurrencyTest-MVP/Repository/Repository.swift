@@ -69,7 +69,12 @@ final class Repository {
     }
     
     static func getLgtmUsers(articleId: String) async throws -> [LGTM]? {
-        let task = AF.request(QiitaAPI.getLgtmUsers(articleId: articleId)).serializingDecodable([LGTM].self)
+        let parameters: Parameters = [
+            "page": "1",
+            "per_page": "10",
+        ]
+        
+        let task = AF.request(QiitaAPI.getLgtmUsers(articleId: articleId, queryParameters: parameters)).serializingDecodable([LGTM].self)
         let response = await task.response
         print("statusCode: \(response.response?.statusCode ?? 0)")
         switch (response.response?.statusCode ?? 0) {
