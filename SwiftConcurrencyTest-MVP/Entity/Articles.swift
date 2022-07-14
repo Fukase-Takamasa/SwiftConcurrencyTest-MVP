@@ -8,17 +8,27 @@
 import Foundation
 
 struct Article: Codable {
-    var title: String
-    var url: String
-    var user: User
+    let id: String
+    let title: String
+    let url: String
+    let user: User
+    let likesCount: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case url
+        case user
+        case likesCount = "likes_count"
+    }
 }
 
 struct User: Codable {
-    var name: String?
-    var id: String?
-    var description: String?
-    var location: String?
-    var profileImageUrl: String?
+    let name: String?
+    let id: String?
+    let description: String?
+    let location: String?
+    let profileImageUrl: String?
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -26,5 +36,15 @@ struct User: Codable {
         case description
         case location
         case profileImageUrl = "profile_image_url"
+    }
+}
+
+struct LGTM: Codable {
+    let createdAt: String
+    let user: User
+    
+    enum CodingKeys: String, CodingKey {
+        case createdAt = "created_at"
+        case user
     }
 }

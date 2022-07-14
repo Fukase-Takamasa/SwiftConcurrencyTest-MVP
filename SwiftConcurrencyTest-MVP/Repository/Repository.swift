@@ -53,17 +53,43 @@ final class Repository {
             //200~299を正常系とみなし、それ以外はErrorをthrow
         case 200...299:
             let value = response.value
-            print("getArticles success value: \(String(describing: value))")
+            print("getPopularIosArticles success value: \(String(describing: value))")
             //成功レスポンスから取り出した値をStoreに格納
             store.popularIosArticlesResponseSubject.send(value)
             
             //Alamofireのエラーがあれば返し、なければカスタムエラーを返す
         default:
             guard let afError = response.error else {
-                print("getArticles unexpectedServerError")
+                print("getPopularIosArticles unexpectedServerError")
                 throw CustomError.unexpectedServerError
             }
-            print("getArticles response error: \(afError)")
+            print("getPopularIosArticles response error: \(afError)")
+            throw afError
+        }
+    }
+    
+    static func getLgtmUsers(articleId: Int) async throws -> [LGTM]? {
+        let task = AF.request(QiitaAPI.getAuthorizedUser).serializingDecodable([LGTM].self)
+        let response = await task.response
+        print("statusCode: \(response.response?.statusCode ?? 0)")
+        switch (response.response?.statusCode ?? 0) {
+            //200~299を正常系とみなし、それ以外はErrorをthrow
+        case 200...299:
+            let value = response.value
+            print("getLgtmUsers success value: \(String(describing: value))")
+            //成功レスポンスから取り出した値をStoreに格納
+            store.lgtmUsersResponseSubject.send(value)
+            
+            //呼び出し元にも値を返却
+            return value
+            
+            //Alamofireのエラーがあれば返し、なければカスタムエラーを返す
+        default:
+            guard let afError = response.error else {
+                print("getLgtmUsers unexpectedServerError")
+                throw CustomError.unexpectedServerError
+            }
+            print("getLgtmUsers response error: \(afError)")
             throw afError
         }
     }

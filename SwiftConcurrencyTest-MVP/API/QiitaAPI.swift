@@ -12,6 +12,7 @@ enum QiitaAPI: URLRequestConvertible {
     
     case getAuthorizedUser
     case getArticles(queryParameters: Parameters?)
+    case getLgtmUsers(articleId: Int)
     
     func asURLRequest() throws -> URLRequest {
         let url = try APIConst.BASE_URL.asURL()
@@ -35,9 +36,7 @@ enum QiitaAPI: URLRequestConvertible {
     
     private var method: HTTPMethod {
         switch self {
-        case .getAuthorizedUser:
-            return .get
-        case .getArticles:
+        default:
             return .get
         }
     }
@@ -48,15 +47,17 @@ enum QiitaAPI: URLRequestConvertible {
             return APIConst.GET_AUTHORIZED_USER
         case .getArticles:
             return APIConst.GET_ARTICLES
+        case .getLgtmUsers(let articleId):
+            return "\(APIConst.GET_ARTICLES)/\(articleId)/likes"
         }
     }
     
     private var parameters: Parameters? {
         switch self {
-        case .getAuthorizedUser:
-            return [:]
         case .getArticles(let parameters):
             return parameters
+        default:
+            return [:]
         }
     }
     
