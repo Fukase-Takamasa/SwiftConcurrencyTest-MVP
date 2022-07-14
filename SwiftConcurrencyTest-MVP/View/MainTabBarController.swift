@@ -43,12 +43,12 @@ class MainTabBarController: UITabBarController {
     }
     
     private func setUserIconButton() {
-        let userIconButton = UIButton(frame: CGRect(x: .zero, y: .zero, width: 40, height: 40))
+        let userIconButton = UIButton(frame: CGRect(x: .zero, y: .zero, width: 36, height: 36))
         let systemImageConfig = UIImage.SymbolConfiguration(pointSize: 36, weight: .regular, scale: .default)
         let placeHolderImage = UIImage(systemName: "person.crop.circle", withConfiguration: systemImageConfig)
         
         userIconButton.imageView?.tintColor = .lightGray
-        userIconButton.imageView?.cornerRadius = 20
+        userIconButton.imageView?.cornerRadius = 18
         userIconButton.setImage(placeHolderImage, for: .normal)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: userIconButton)
         
