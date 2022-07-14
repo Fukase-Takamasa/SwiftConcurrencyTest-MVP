@@ -78,10 +78,6 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
 
 //PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
 extension ArticleListViewController: ArticleListPresenterInterface {
-    func authorizedUserResponse(user: User) {
-       
-    }
-    
     func monthlyPopularArticlesResponse(articles: [Article]) {
         self.articles = articles
         self.tableView.reloadData()

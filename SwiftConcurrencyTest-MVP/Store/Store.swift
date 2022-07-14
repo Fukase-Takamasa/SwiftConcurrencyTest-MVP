@@ -15,8 +15,8 @@ class Store {
         return authorizedUserResponseSubject.eraseToAnyPublisher()
     }
 
-    var articlesResponse: AnyPublisher<[Article]?, Never> {
-        return articlesResponseSubject.eraseToAnyPublisher()
+    var popularIosArticlesResponse: AnyPublisher<[Article]?, Never> {
+        return popularIosArticlesResponseSubject.eraseToAnyPublisher()
     }
     
     var error: AnyPublisher<Error, Never> {
@@ -24,6 +24,6 @@ class Store {
     }
     
     var authorizedUserResponseSubject = CurrentValueSubject<User?, Never>(nil)
-    var articlesResponseSubject = CurrentValueSubject<[Article]?, Never>(nil)
+    var popularIosArticlesResponseSubject = CurrentValueSubject<[Article]?, Never>(nil)
     var errorSubject = PassthroughSubject<Error, Never>()
 }

@@ -39,7 +39,7 @@ final class Repository {
         }
     }
 
-    static func getMonthlyPupularArticles() async throws {
+    static func getPopularIosArticles() async throws {
         let parameters: Parameters = [
             "page": "1",
             "per_page": "10",
@@ -55,7 +55,7 @@ final class Repository {
             let value = response.value
             print("getArticles success value: \(String(describing: value))")
             //成功レスポンスから取り出した値をStoreに格納
-            store.articlesResponseSubject.send(value)
+            store.popularIosArticlesResponseSubject.send(value)
             
             //Alamofireのエラーがあれば返し、なければカスタムエラーを返す
         default:
