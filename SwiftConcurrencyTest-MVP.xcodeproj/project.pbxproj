@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC1C2D8C287FFE21001CBFB5 /* LgtmUserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2D8A287FFE21001CBFB5 /* LgtmUserListCell.swift */; };
-		BC1C2D8D287FFE21001CBFB5 /* LgtmUserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1C2D8B287FFE21001CBFB5 /* LgtmUserListCell.xib */; };
+		BC1C2D8C287FFE21001CBFB5 /* LgtmUserIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2D8A287FFE21001CBFB5 /* LgtmUserIconCell.swift */; };
+		BC1C2D8D287FFE21001CBFB5 /* LgtmUserIconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1C2D8B287FFE21001CBFB5 /* LgtmUserIconCell.xib */; };
 		BC1C2D9028801D70001CBFB5 /* ArticleListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2D8F28801D70001CBFB5 /* ArticleListUtil.swift */; };
 		BC1C2D9328802181001CBFB5 /* LgtmUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2D9228802181001CBFB5 /* LgtmUsersModel.swift */; };
+		BC1C2D9628802A10001CBFB5 /* LgtmCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2D9428802A10001CBFB5 /* LgtmCountCell.swift */; };
+		BC1C2D9728802A10001CBFB5 /* LgtmCountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1C2D9528802A10001CBFB5 /* LgtmCountCell.xib */; };
 		BC56AF1B287D99900037AA07 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BC56AF1A287D99900037AA07 /* Alamofire */; };
 		BC56AF1E287D99C20037AA07 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BC56AF1D287D99C20037AA07 /* CombineCocoa */; };
 		BC56AF21287D99FB0037AA07 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = BC56AF20287D99FB0037AA07 /* SkeletonView */; };
@@ -64,10 +66,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC1C2D8A287FFE21001CBFB5 /* LgtmUserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LgtmUserListCell.swift; sourceTree = "<group>"; };
-		BC1C2D8B287FFE21001CBFB5 /* LgtmUserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LgtmUserListCell.xib; sourceTree = "<group>"; };
+		BC1C2D8A287FFE21001CBFB5 /* LgtmUserIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LgtmUserIconCell.swift; sourceTree = "<group>"; };
+		BC1C2D8B287FFE21001CBFB5 /* LgtmUserIconCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LgtmUserIconCell.xib; sourceTree = "<group>"; };
 		BC1C2D8F28801D70001CBFB5 /* ArticleListUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListUtil.swift; sourceTree = "<group>"; };
 		BC1C2D9228802181001CBFB5 /* LgtmUsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LgtmUsersModel.swift; sourceTree = "<group>"; };
+		BC1C2D9428802A10001CBFB5 /* LgtmCountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LgtmCountCell.swift; sourceTree = "<group>"; };
+		BC1C2D9528802A10001CBFB5 /* LgtmCountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LgtmCountCell.xib; sourceTree = "<group>"; };
 		BC6CFCC128783F9A00441CA8 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		BC6CFCC328784EDC00441CA8 /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 		BC6CFCC528784EFF00441CA8 /* ArticleListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticleListViewController.storyboard; sourceTree = "<group>"; };
@@ -163,8 +167,10 @@
 				BC6CFCC528784EFF00441CA8 /* ArticleListViewController.storyboard */,
 				BC7CE39F2872E554004D9DD8 /* ArticleCell.swift */,
 				BC7CE3A02872E554004D9DD8 /* ArticleCell.xib */,
-				BC1C2D8A287FFE21001CBFB5 /* LgtmUserListCell.swift */,
-				BC1C2D8B287FFE21001CBFB5 /* LgtmUserListCell.xib */,
+				BC1C2D8A287FFE21001CBFB5 /* LgtmUserIconCell.swift */,
+				BC1C2D8B287FFE21001CBFB5 /* LgtmUserIconCell.xib */,
+				BC1C2D9428802A10001CBFB5 /* LgtmCountCell.swift */,
+				BC1C2D9528802A10001CBFB5 /* LgtmCountCell.xib */,
 			);
 			path = ArticleList;
 			sourceTree = "<group>";
@@ -433,10 +439,11 @@
 				BC6CFCC628784EFF00441CA8 /* ArticleListViewController.storyboard in Resources */,
 				BC7CE3A22872E554004D9DD8 /* ArticleCell.xib in Resources */,
 				BCCA1C6E2872C08E006B3493 /* LaunchScreen.storyboard in Resources */,
-				BC1C2D8D287FFE21001CBFB5 /* LgtmUserListCell.xib in Resources */,
+				BC1C2D8D287FFE21001CBFB5 /* LgtmUserIconCell.xib in Resources */,
 				BC765EEB287D8F8E0025A3B3 /* ArticleDetailViewController.storyboard in Resources */,
 				BCCA1C6B2872C08E006B3493 /* Assets.xcassets in Resources */,
 				BCCA1C692872C08D006B3493 /* Main.storyboard in Resources */,
+				BC1C2D9728802A10001CBFB5 /* LgtmCountCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,8 +480,9 @@
 				BC7CE3A42872F1C2004D9DD8 /* ArticleListPresenter.swift in Sources */,
 				BC7CE38B2872D2D7004D9DD8 /* QiitaAPI.swift in Sources */,
 				BC765EE4287D838F0025A3B3 /* Extension+Storyboard.swift in Sources */,
+				BC1C2D9628802A10001CBFB5 /* LgtmCountCell.swift in Sources */,
 				BC7CE39E2872DDBA004D9DD8 /* Repository.swift in Sources */,
-				BC1C2D8C287FFE21001CBFB5 /* LgtmUserListCell.swift in Sources */,
+				BC1C2D8C287FFE21001CBFB5 /* LgtmUserIconCell.swift in Sources */,
 				BC1C2D9028801D70001CBFB5 /* ArticleListUtil.swift in Sources */,
 				BC7CE3992872D854004D9DD8 /* Store.swift in Sources */,
 				BC7CE3912872D31F004D9DD8 /* Const.swift in Sources */,

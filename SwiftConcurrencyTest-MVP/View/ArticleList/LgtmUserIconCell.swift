@@ -1,5 +1,5 @@
 //
-//  LgtmUserListCell.swift
+//  LgtmUserIconCell.swift
 //  SwiftConcurrencyTest-MVP
 //
 //  Created by ウルトラ深瀬 on 14/7/22.
@@ -9,7 +9,7 @@ import UIKit
 import Instantiate
 import InstantiateStandard
 
-class LgtmUserListCell: UICollectionViewCell, Reusable {
+class LgtmUserIconCell: UICollectionViewCell, Reusable {
 
     @IBOutlet weak var imageView: UIImageView!
     
