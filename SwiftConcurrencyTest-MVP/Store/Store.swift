@@ -19,8 +19,12 @@ class Store {
         return popularIosArticlesResponseSubject.eraseToAnyPublisher()
     }
     
-    var lgtmUsersResponse: AnyPublisher<[LGTM]?, Never> {
-        return lgtmUsersResponseSubject.eraseToAnyPublisher()
+    var lgtmUsersModelsResponse: AnyPublisher<[LgtmUsersModel]?, Never> {
+        return lgtmUsersModelsResponseSubject.eraseToAnyPublisher()
+    }
+    
+    var favoriteArticleList: AnyPublisher<[Article], Never> {
+        return favoriteArticleListSubject.eraseToAnyPublisher()
     }
     
     var error: AnyPublisher<Error, Never> {
@@ -29,6 +33,7 @@ class Store {
     
     var authorizedUserResponseSubject = CurrentValueSubject<User?, Never>(nil)
     var popularIosArticlesResponseSubject = CurrentValueSubject<[Article]?, Never>(nil)
-    var lgtmUsersResponseSubject = CurrentValueSubject<[LGTM]?, Never>(nil)
+    var lgtmUsersModelsResponseSubject = CurrentValueSubject<[LgtmUsersModel]?, Never>(nil)
+    var favoriteArticleListSubject = CurrentValueSubject<[Article], Never>([])
     var errorSubject = PassthroughSubject<Error, Never>()
 }

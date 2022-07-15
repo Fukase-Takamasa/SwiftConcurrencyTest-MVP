@@ -25,7 +25,7 @@ class MainTabBarController: UITabBarController {
         var vcs: [UIViewController] = []
         
         firstVC = ArticleListViewController.instantiate()
-        secondVC = ArticleListViewController.instantiate()
+        secondVC = FavoriteArticleListViewController.instantiate()
         
         guard let firstVC = firstVC, let secondVC = secondVC else {return}
         

@@ -106,9 +106,10 @@ final class Repository {
                 group.addTask {
                     let lgtmUsers = try await getLgtmUsers(articleId: articleId) ?? []
                     //必要なキーを足した独自のModel構造体に差し替えて返却
-                    return LgtmUsersModel(articleId: articleId,
-                                          totalLgtmCount: likesCount,
-                                          lgtms: lgtmUsers)
+                    return LgtmUsersModel(
+                        articleId: articleId,
+                        totalLgtmCount: likesCount,
+                        lgtms: lgtmUsers)
                 }
             }
             var lgtmUsersModels = [LgtmUsersModel]()

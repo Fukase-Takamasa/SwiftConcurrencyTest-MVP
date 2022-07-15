@@ -1,8 +1,8 @@
 //
-//  ArticleListViewController.swift
+//  FavoriteArticleListViewController.swift
 //  SwiftConcurrencyTest-MVP
 //
-//  Created by ウルトラ深瀬 on 8/7/22.
+//  Created by ウルトラ深瀬 on 14/7/22.
 //
 
 import UIKit
@@ -12,8 +12,8 @@ import PKHUD
 import Kingfisher
 import CombineCocoa
 
-class ArticleListViewController: UIViewController, StoryboardInstantiatable {
-    private var presenter: ArticleListPresenter?
+class FavoriteArticleListViewController: UIViewController, StoryboardInstantiatable {
+    private var presenter: FavoriteArticleListPresenter?
     private var articles: [Article] = []
     private var lgtmUsersModelsOfEachArticles: [LgtmUsersModel] = []
 
@@ -30,13 +30,12 @@ class ArticleListViewController: UIViewController, StoryboardInstantiatable {
         tableView.register(UINib(nibName: ArticleCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: ArticleCell.reusableIdentifier)
         
         //PresenterのListenerに自身を代入
-        presenter = ArticleListPresenter(listener: self)
-        presenter?.getMonthlyPupularArticles()
+        presenter = FavoriteArticleListPresenter(listener: self)
     }
 
 }
 
-extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource {
+extension FavoriteArticleListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return articles.count
     }
@@ -99,22 +98,10 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 //PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
-extension ArticleListViewController: ArticleListPresenterInterface {
-    func monthlyPopularArticlesResponse(articles: [Article]) {
+extension FavoriteArticleListViewController: FavoriteArticleListPresenterInterface {
+    func showFavoriteArticles(articles: [Article], lgtmUsersModelsOfEachArticles: [LgtmUsersModel]) {
         self.articles = articles
-        self.tableView.reloadData()
-    }
-    
-    func lgtmUsersOfEachArticlesResponse(lgtmUsersModelsOfEachArticles: [LgtmUsersModel]) {
         self.lgtmUsersModelsOfEachArticles = lgtmUsersModelsOfEachArticles
         self.tableView.reloadData()
-    }
-    
-    func errorResponse(error: Error) {
-        
-    }
-    
-    func isFetching(_ flag: Bool) {
-        flag ? HUD.show(.progress) : HUD.hide()
     }
 }
