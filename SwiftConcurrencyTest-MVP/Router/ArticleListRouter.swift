@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ArticleListWireframe {
+protocol ArticleListWireframe: AnyObject {
     func showArticleDetail(_ article: ArticleEntity)
 }
 

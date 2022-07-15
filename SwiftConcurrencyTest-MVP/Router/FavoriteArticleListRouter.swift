@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FavoriteArticleListWireframe {
+protocol FavoriteArticleListWireframe: AnyObject {
 //    func showArticleDetail(_ article: ArticleEntity)
 }
 

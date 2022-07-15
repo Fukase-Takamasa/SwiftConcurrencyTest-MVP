@@ -22,6 +22,8 @@
 		BC1C2DB2288142A4001CBFB5 /* ArticleListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DB1288142A4001CBFB5 /* ArticleListRouter.swift */; };
 		BC1C2DB4288142B2001CBFB5 /* ArticleDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DB3288142B2001CBFB5 /* ArticleDetailRouter.swift */; };
 		BC1C2DB6288142C5001CBFB5 /* FavoriteArticleListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DB5288142C5001CBFB5 /* FavoriteArticleListRouter.swift */; };
+		BC1C2DBA28818875001CBFB5 /* MainTabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DB928818875001CBFB5 /* MainTabBarRouter.swift */; };
+		BC1C2DBC28818889001CBFB5 /* MainTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DBB28818889001CBFB5 /* MainTabBarPresenter.swift */; };
 		BC56AF1B287D99900037AA07 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BC56AF1A287D99900037AA07 /* Alamofire */; };
 		BC56AF1E287D99C20037AA07 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BC56AF1D287D99C20037AA07 /* CombineCocoa */; };
 		BC56AF21287D99FB0037AA07 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = BC56AF20287D99FB0037AA07 /* SkeletonView */; };
@@ -90,6 +92,8 @@
 		BC1C2DB1288142A4001CBFB5 /* ArticleListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListRouter.swift; sourceTree = "<group>"; };
 		BC1C2DB3288142B2001CBFB5 /* ArticleDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailRouter.swift; sourceTree = "<group>"; };
 		BC1C2DB5288142C5001CBFB5 /* FavoriteArticleListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteArticleListRouter.swift; sourceTree = "<group>"; };
+		BC1C2DB928818875001CBFB5 /* MainTabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarRouter.swift; sourceTree = "<group>"; };
+		BC1C2DBB28818889001CBFB5 /* MainTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarPresenter.swift; sourceTree = "<group>"; };
 		BC6CFCC128783F9A00441CA8 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		BC6CFCC328784EDC00441CA8 /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 		BC6CFCC528784EFF00441CA8 /* ArticleListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticleListViewController.storyboard; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 		BC1C2DB028814244001CBFB5 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				BC1C2DB928818875001CBFB5 /* MainTabBarRouter.swift */,
 				BC1C2DB1288142A4001CBFB5 /* ArticleListRouter.swift */,
 				BC1C2DB3288142B2001CBFB5 /* ArticleDetailRouter.swift */,
 				BC1C2DB5288142C5001CBFB5 /* FavoriteArticleListRouter.swift */,
@@ -241,6 +246,7 @@
 		BC7CE3852872D10B004D9DD8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				BC1C2DBB28818889001CBFB5 /* MainTabBarPresenter.swift */,
 				BC7CE3A32872F1C2004D9DD8 /* ArticleListPresenter.swift */,
 				BC765EED287D928E0025A3B3 /* ArticleDetailPresenter.swift */,
 				BC1C2D9D28803C97001CBFB5 /* FavoriteArticleListPresenter.swift */,
@@ -535,7 +541,9 @@
 				BC1C2D8C287FFE21001CBFB5 /* LgtmUserIconCell.swift in Sources */,
 				BC7CE3992872D854004D9DD8 /* Store.swift in Sources */,
 				BC1C2D9E28803C97001CBFB5 /* FavoriteArticleListPresenter.swift in Sources */,
+				BC1C2DBA28818875001CBFB5 /* MainTabBarRouter.swift in Sources */,
 				BC1C2DAD288140CD001CBFB5 /* ArticleInterector.swift in Sources */,
+				BC1C2DBC28818889001CBFB5 /* MainTabBarPresenter.swift in Sources */,
 				BC7CE3912872D31F004D9DD8 /* Const.swift in Sources */,
 				BC7CE3A12872E554004D9DD8 /* ArticleCell.swift in Sources */,
 				BC765EEE287D928E0025A3B3 /* ArticleDetailPresenter.swift in Sources */,
