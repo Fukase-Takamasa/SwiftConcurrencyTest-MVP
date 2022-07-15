@@ -33,7 +33,7 @@ class ArticleListPresenter {
         
         //API叩く（結果はStoreに格納される）
         Task {
-            let articles = try await Repository.getPopularIosArticles()
+            let articles = try await ArticleInterector.getPopularIosArticles()
             
             guard let articles = articles else { return }
             
@@ -46,7 +46,7 @@ class ArticleListPresenter {
             //取得した各記事のLGTMユーザーリストを非同期で並行取得する
             print("=== getLgtmUsersOfEachArticles開始 ===")
             
-            let lgtmUsersModelsOfEachArticles = try await Repository.getLgtmUsersOfEachArticles(articles: articles)
+            let lgtmUsersModelsOfEachArticles = try await LgtmInterector.getLgtmUsersOfEachArticles(articles: articles)
             
             print("lgtmUsersModelsOfEachArticles: \(lgtmUsersModelsOfEachArticles)")
             print("=== getLgtmUsersOfEachArticles完了 ===")

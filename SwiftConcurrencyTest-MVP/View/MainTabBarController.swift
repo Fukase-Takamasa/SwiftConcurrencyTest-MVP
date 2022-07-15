@@ -54,7 +54,7 @@ class MainTabBarController: UITabBarController {
         
         Task {
             try await userIconButton.kf
-                .setImage(with: URL(string: Repository.getAuthorizedUser()?.profileImageUrl ?? ""), for: .normal, placeholder: placeHolderImage)
+                .setImage(with: URL(string: AuthorizedUserInterector.getAuthorizedUser()?.profileImageUrl ?? ""), for: .normal, placeholder: placeHolderImage)
         }
     }
     
