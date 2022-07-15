@@ -19,6 +19,9 @@
 		BC1C2DAB28813CBF001CBFB5 /* LgtmEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DAA28813CBF001CBFB5 /* LgtmEntity.swift */; };
 		BC1C2DAD288140CD001CBFB5 /* ArticleInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DAC288140CD001CBFB5 /* ArticleInterector.swift */; };
 		BC1C2DAF2881410C001CBFB5 /* LgtmInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DAE2881410C001CBFB5 /* LgtmInterector.swift */; };
+		BC1C2DB2288142A4001CBFB5 /* ArticleListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DB1288142A4001CBFB5 /* ArticleListRouter.swift */; };
+		BC1C2DB4288142B2001CBFB5 /* ArticleDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DB3288142B2001CBFB5 /* ArticleDetailRouter.swift */; };
+		BC1C2DB6288142C5001CBFB5 /* FavoriteArticleListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DB5288142C5001CBFB5 /* FavoriteArticleListRouter.swift */; };
 		BC56AF1B287D99900037AA07 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BC56AF1A287D99900037AA07 /* Alamofire */; };
 		BC56AF1E287D99C20037AA07 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BC56AF1D287D99C20037AA07 /* CombineCocoa */; };
 		BC56AF21287D99FB0037AA07 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = BC56AF20287D99FB0037AA07 /* SkeletonView */; };
@@ -84,6 +87,9 @@
 		BC1C2DAA28813CBF001CBFB5 /* LgtmEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LgtmEntity.swift; sourceTree = "<group>"; };
 		BC1C2DAC288140CD001CBFB5 /* ArticleInterector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleInterector.swift; sourceTree = "<group>"; };
 		BC1C2DAE2881410C001CBFB5 /* LgtmInterector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LgtmInterector.swift; sourceTree = "<group>"; };
+		BC1C2DB1288142A4001CBFB5 /* ArticleListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListRouter.swift; sourceTree = "<group>"; };
+		BC1C2DB3288142B2001CBFB5 /* ArticleDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailRouter.swift; sourceTree = "<group>"; };
+		BC1C2DB5288142C5001CBFB5 /* FavoriteArticleListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteArticleListRouter.swift; sourceTree = "<group>"; };
 		BC6CFCC128783F9A00441CA8 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		BC6CFCC328784EDC00441CA8 /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 		BC6CFCC528784EFF00441CA8 /* ArticleListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticleListViewController.storyboard; sourceTree = "<group>"; };
@@ -170,6 +176,16 @@
 				BC1C2D9B28803572001CBFB5 /* FavoriteArticleListViewController.storyboard */,
 			);
 			path = FavoriteArticleList;
+			sourceTree = "<group>";
+		};
+		BC1C2DB028814244001CBFB5 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				BC1C2DB1288142A4001CBFB5 /* ArticleListRouter.swift */,
+				BC1C2DB3288142B2001CBFB5 /* ArticleDetailRouter.swift */,
+				BC1C2DB5288142C5001CBFB5 /* FavoriteArticleListRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		BC6CFCC028783F8500441CA8 /* CustomClass */ = {
@@ -314,6 +330,7 @@
 				BC1C2D9128802155001CBFB5 /* Model */,
 				BC7CE3832872D0ED004D9DD8 /* Entity */,
 				BC7CE39C2872DDAD004D9DD8 /* Interector */,
+				BC1C2DB028814244001CBFB5 /* Router */,
 				BC7CE3852872D10B004D9DD8 /* Presenter */,
 				BC7CE3862872D1B9004D9DD8 /* View */,
 				BCCA1C6A2872C08E006B3493 /* Assets.xcassets */,
@@ -495,12 +512,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1C2DB4288142B2001CBFB5 /* ArticleDetailRouter.swift in Sources */,
 				BC7CE3892872D1E4004D9DD8 /* ArticleEntity.swift in Sources */,
 				BC6CFCC828784FF600441CA8 /* MainTabBarController.swift in Sources */,
 				BC1C2DAF2881410C001CBFB5 /* LgtmInterector.swift in Sources */,
 				BC6CFCC228783F9A00441CA8 /* CustomError.swift in Sources */,
 				BC1C2DA928813CB3001CBFB5 /* UserEntity.swift in Sources */,
 				BC765EE6287D8DF50025A3B3 /* UIViewController+Extension.swift in Sources */,
+				BC1C2DB2288142A4001CBFB5 /* ArticleListRouter.swift in Sources */,
 				BCCA1C622872C08D006B3493 /* AppDelegate.swift in Sources */,
 				BC7CE3922872D31F004D9DD8 /* APIConst.swift in Sources */,
 				BC1C2D9328802181001CBFB5 /* LgtmUsersModel.swift in Sources */,
@@ -509,6 +528,7 @@
 				BC7CE3A42872F1C2004D9DD8 /* ArticleListPresenter.swift in Sources */,
 				BC7CE38B2872D2D7004D9DD8 /* QiitaAPI.swift in Sources */,
 				BC1C2DAB28813CBF001CBFB5 /* LgtmEntity.swift in Sources */,
+				BC1C2DB6288142C5001CBFB5 /* FavoriteArticleListRouter.swift in Sources */,
 				BC765EE4287D838F0025A3B3 /* Extension+Storyboard.swift in Sources */,
 				BC1C2D9628802A10001CBFB5 /* LgtmCountCell.swift in Sources */,
 				BC7CE39E2872DDBA004D9DD8 /* AuthorizedUserInterector.swift in Sources */,
