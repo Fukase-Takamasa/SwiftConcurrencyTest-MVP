@@ -12,6 +12,7 @@ protocol FavoriteArticleListPresentation: AnyObject {
     func showFavoriteArticles(articles: [ArticleEntity], lgtmUsersModelsOfEachArticles: [LgtmUsersModel])
 }
 
+@MainActor
 class FavoriteArticleListPresenter {
 //    private weak var listener: FavoriteArticleListPresenterInterface?
     private weak var view: FavoriteArticleListView?

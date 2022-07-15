@@ -13,7 +13,6 @@ protocol AuthorizedUserUsecase: AnyObject {
     func getAuthorizedUser() async throws -> UserEntity?
 }
 
-//@MainActor
 class AuthorizedUserInterector: AuthorizedUserUsecase {
     private let store = Store.shard
         

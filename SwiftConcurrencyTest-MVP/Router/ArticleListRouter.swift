@@ -11,6 +11,7 @@ protocol ArticleListWireframe: AnyObject {
     func showArticleDetail(_ article: ArticleEntity)
 }
 
+@MainActor
 class ArticleListRouter {
     private unowned let viewController: UIViewController
     
@@ -22,8 +23,13 @@ class ArticleListRouter {
     static func assembleModules() -> UIViewController {
         let view = ArticleListViewController.instantiate()
         let router = ArticleListRouter(viewController: view)
-        let interector = ArticleInterector()
-        let presenter = ArticleListPresenter(view: view, router: router, articleInterector: interector)
+        let articleInterector = ArticleInterector()
+        let lgtmInterector = LgtmInterector()
+        let presenter = ArticleListPresenter(
+            view: view,
+            router: router,
+            articleInterector: articleInterector,
+            lgtmInterector: lgtmInterector)
         
         view.presenter = presenter
         return view

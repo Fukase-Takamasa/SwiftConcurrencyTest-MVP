@@ -9,9 +9,10 @@ import Foundation
 import Combine
 
 protocol ArticleDetailPresentation: AnyObject {
-    func openUrl(url: URL)
+//    func openUrl(url: URL)
 }
 
+@MainActor
 class ArticleDetailPresenter {
 //    private weak var listener: ArticleDetailPresenterInterface?
     
@@ -45,7 +46,7 @@ class ArticleDetailPresenter {
 }
 
 extension ArticleDetailPresenter: ArticleDetailPresentation {
-    func openUrl(url: URL) {
-        
-    }
+//    func openUrl(url: URL) {
+//
+//    }
 }

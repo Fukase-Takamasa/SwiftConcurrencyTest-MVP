@@ -13,7 +13,6 @@ protocol ArticleUsecase: AnyObject {
     func getPopularIosArticles() async throws -> [ArticleEntity]?
 }
 
-//@MainActor
 final class ArticleInterector: ArticleUsecase {
     private let store = Store.shard
     

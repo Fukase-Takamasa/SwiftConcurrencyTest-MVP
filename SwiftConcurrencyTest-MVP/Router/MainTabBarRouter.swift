@@ -11,6 +11,7 @@ protocol MainTabBarWireframe: AnyObject {
     func setupViewControllers()
 }
 
+@MainActor
 class MainTabBarRouter {
     private unowned let tabBarViewController: UITabBarController
     

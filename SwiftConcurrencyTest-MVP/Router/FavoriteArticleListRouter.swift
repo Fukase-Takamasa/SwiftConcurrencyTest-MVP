@@ -11,6 +11,7 @@ protocol FavoriteArticleListWireframe: AnyObject {
 //    func showArticleDetail(_ article: ArticleEntity)
 }
 
+@MainActor
 class FavoriteArticleListRouter {
     private unowned let viewController: UIViewController
     

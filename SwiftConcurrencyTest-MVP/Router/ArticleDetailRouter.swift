@@ -11,6 +11,7 @@ protocol ArticleDetailWireframe: AnyObject {
 //    func showArticleDetail(_ article: ArticleEntity)
 }
 
+@MainActor
 class ArticleDetailRouter {
     private unowned let viewController: UIViewController
     
