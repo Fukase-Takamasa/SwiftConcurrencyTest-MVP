@@ -13,8 +13,8 @@ import Alamofire
 final class Repository {
     private static let store = Store.shard
     
-    static func getAuthorizedUser() async throws -> User? {
-        let task = AF.request(QiitaAPI.getAuthorizedUser).serializingDecodable(User.self)
+    static func getAuthorizedUser() async throws -> UserEntity? {
+        let task = AF.request(QiitaAPI.getAuthorizedUser).serializingDecodable(UserEntity.self)
         let response = await task.response
         print("statusCode: \(response.response?.statusCode ?? 0)")
         switch (response.response?.statusCode ?? 0) {
@@ -39,14 +39,14 @@ final class Repository {
         }
     }
 
-    static func getPopularIosArticles() async throws -> [Article]? {
+    static func getPopularIosArticles() async throws -> [ArticleEntity]? {
         let parameters: Parameters = [
             "page": "1",
             "per_page": "10",
             "query": "tag:iOS created:>2017-01-01 stocks:>100"
         ]
         
-        let task = AF.request(QiitaAPI.getArticles(queryParameters: parameters)).serializingDecodable([Article].self)
+        let task = AF.request(QiitaAPI.getArticles(queryParameters: parameters)).serializingDecodable([ArticleEntity].self)
         let response = await task.response
 
         switch (response.response?.statusCode ?? 0) {
@@ -71,13 +71,13 @@ final class Repository {
         }
     }
     
-    static func getLgtmUsers(articleId: String) async throws -> [LGTM]? {
+    static func getLgtmUsers(articleId: String) async throws -> [LgtmEntity]? {
         let parameters: Parameters = [
             "page": "1",
             "per_page": "10",
         ]
         
-        let task = AF.request(QiitaAPI.getLgtmUsers(articleId: articleId, queryParameters: parameters)).serializingDecodable([LGTM].self)
+        let task = AF.request(QiitaAPI.getLgtmUsers(articleId: articleId, queryParameters: parameters)).serializingDecodable([LgtmEntity].self)
         let response = await task.response
         print("statusCode: \(response.response?.statusCode ?? 0)")
         switch (response.response?.statusCode ?? 0) {
@@ -100,7 +100,7 @@ final class Repository {
     }
     
     //一覧記事それぞれに紐づくLGTMユーザーリストを並行取得する（可変個数TaskでのTask.group並行処理）
-    static func getLgtmUsersOfEachArticles(articles: [Article]) async throws -> [LgtmUsersModel] {
+    static func getLgtmUsersOfEachArticles(articles: [ArticleEntity]) async throws -> [LgtmUsersModel] {
         try await withThrowingTaskGroup(of: (LgtmUsersModel).self, body: { group in
             for (articleId, likesCount) in articles.map({ ($0.id, $0.likesCount) }) {
                 group.addTask {

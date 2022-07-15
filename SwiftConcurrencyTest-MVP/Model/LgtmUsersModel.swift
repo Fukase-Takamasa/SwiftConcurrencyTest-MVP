@@ -10,5 +10,5 @@ import Foundation
 struct LgtmUsersModel {
     let articleId: String
     let totalLgtmCount: Int
-    let lgtms: [LGTM]
+    let lgtms: [LgtmEntity]
 }

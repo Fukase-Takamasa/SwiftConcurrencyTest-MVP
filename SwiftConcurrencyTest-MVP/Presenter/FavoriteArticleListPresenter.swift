@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol FavoriteArticleListPresenterInterface: AnyObject {
-    func showFavoriteArticles(articles: [Article], lgtmUsersModelsOfEachArticles: [LgtmUsersModel])
+    func showFavoriteArticles(articles: [ArticleEntity], lgtmUsersModelsOfEachArticles: [LgtmUsersModel])
 }
 
 class FavoriteArticleListPresenter {

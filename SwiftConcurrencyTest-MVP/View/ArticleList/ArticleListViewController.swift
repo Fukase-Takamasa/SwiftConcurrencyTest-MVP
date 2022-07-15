@@ -14,7 +14,7 @@ import CombineCocoa
 
 class ArticleListViewController: UIViewController, StoryboardInstantiatable {
     private var presenter: ArticleListPresenter?
-    private var articles: [Article] = []
+    private var articles: [ArticleEntity] = []
     private var lgtmUsersModelsOfEachArticles: [LgtmUsersModel] = []
 
     @IBOutlet weak var tableView: UITableView!
@@ -100,7 +100,7 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
 
 //PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
 extension ArticleListViewController: ArticleListPresenterInterface {
-    func monthlyPopularArticlesResponse(articles: [Article]) {
+    func monthlyPopularArticlesResponse(articles: [ArticleEntity]) {
         self.articles = articles
         self.tableView.reloadData()
     }

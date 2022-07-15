@@ -14,7 +14,7 @@ import CombineCocoa
 
 class FavoriteArticleListViewController: UIViewController, StoryboardInstantiatable {
     private var presenter: FavoriteArticleListPresenter?
-    private var articles: [Article] = []
+    private var articles: [ArticleEntity] = []
     private var lgtmUsersModelsOfEachArticles: [LgtmUsersModel] = []
 
     @IBOutlet weak var tableView: UITableView!
@@ -99,7 +99,7 @@ extension FavoriteArticleListViewController: UITableViewDelegate, UITableViewDat
 
 //PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
 extension FavoriteArticleListViewController: FavoriteArticleListPresenterInterface {
-    func showFavoriteArticles(articles: [Article], lgtmUsersModelsOfEachArticles: [LgtmUsersModel]) {
+    func showFavoriteArticles(articles: [ArticleEntity], lgtmUsersModelsOfEachArticles: [LgtmUsersModel]) {
         self.articles = articles
         self.lgtmUsersModelsOfEachArticles = lgtmUsersModelsOfEachArticles
         self.tableView.reloadData()

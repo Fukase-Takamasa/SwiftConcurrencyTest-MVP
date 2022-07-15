@@ -11,11 +11,11 @@ import Combine
 class Store {
     static var shard = Store()
     
-    var authorizedUserResponse: AnyPublisher<User?, Never> {
+    var authorizedUserResponse: AnyPublisher<UserEntity?, Never> {
         return authorizedUserResponseSubject.eraseToAnyPublisher()
     }
 
-    var popularIosArticlesResponse: AnyPublisher<[Article]?, Never> {
+    var popularIosArticlesResponse: AnyPublisher<[ArticleEntity]?, Never> {
         return popularIosArticlesResponseSubject.eraseToAnyPublisher()
     }
     
@@ -23,7 +23,7 @@ class Store {
         return lgtmUsersModelsResponseSubject.eraseToAnyPublisher()
     }
     
-    var favoriteArticleList: AnyPublisher<[Article], Never> {
+    var favoriteArticleList: AnyPublisher<[ArticleEntity], Never> {
         return favoriteArticleListSubject.eraseToAnyPublisher()
     }
     
@@ -31,9 +31,9 @@ class Store {
         return errorSubject.eraseToAnyPublisher()
     }
     
-    var authorizedUserResponseSubject = CurrentValueSubject<User?, Never>(nil)
-    var popularIosArticlesResponseSubject = CurrentValueSubject<[Article]?, Never>(nil)
+    var authorizedUserResponseSubject = CurrentValueSubject<UserEntity?, Never>(nil)
+    var popularIosArticlesResponseSubject = CurrentValueSubject<[ArticleEntity]?, Never>(nil)
     var lgtmUsersModelsResponseSubject = CurrentValueSubject<[LgtmUsersModel]?, Never>(nil)
-    var favoriteArticleListSubject = CurrentValueSubject<[Article], Never>([])
+    var favoriteArticleListSubject = CurrentValueSubject<[ArticleEntity], Never>([])
     var errorSubject = PassthroughSubject<Error, Never>()
 }

@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol ArticleListPresenterInterface: AnyObject {
-    func monthlyPopularArticlesResponse(articles: [Article])
+    func monthlyPopularArticlesResponse(articles: [ArticleEntity])
     func lgtmUsersOfEachArticlesResponse(lgtmUsersModelsOfEachArticles: [LgtmUsersModel])
     func errorResponse(error: Error)
     func isFetching(_ flag : Bool)
