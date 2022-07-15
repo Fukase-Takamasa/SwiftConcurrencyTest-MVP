@@ -13,13 +13,15 @@ import Kingfisher
 import CombineCocoa
 
 protocol ArticleListView: AnyObject {
-    
+    func showArticles(articles: [ArticleEntity])
+    func showLgtmUsersOfEachArticles(lgtmUsersModels: [LgtmUsersModel])
+    func handleLoadingIndicator(isFetching: Bool)
 }
 
 class ArticleListViewController: UIViewController, StoryboardInstantiatable {
     var presenter: ArticleListPresentation?
     private var articles: [ArticleEntity] = []
-    private var lgtmUsersModelsOfEachArticles: [LgtmUsersModel] = []
+    private var lgtmUsersModels: [LgtmUsersModel] = []
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -33,37 +35,25 @@ class ArticleListViewController: UIViewController, StoryboardInstantiatable {
         
         tableView.register(UINib(nibName: ArticleCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: ArticleCell.reusableIdentifier)
         
-        //PresenterのListenerに自身を代入
-//        presenter = ArticleListPresenter(listener: self)
-//        presenter?.getMonthlyPupularArticles()
+        self.presenter?.viewDidLoad()
     }
-
 }
 
 extension ArticleListViewController: ArticleListView {
+    func showArticles(articles: [ArticleEntity]) {
+        self.articles = articles
+        self.tableView.reloadData()
+    }
     
+    func showLgtmUsersOfEachArticles(lgtmUsersModels: [LgtmUsersModel]) {
+        self.lgtmUsersModels = lgtmUsersModels
+        self.tableView.reloadData()
+    }
+        
+    func handleLoadingIndicator(isFetching: Bool) {
+        isFetching ? HUD.show(.progress) : HUD.hide()
+    }
 }
-
-//PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
-//extension ArticleListViewController: ArticleListPresenterInterface {
-//    func monthlyPopularArticlesResponse(articles: [ArticleEntity]) {
-//        self.articles = articles
-//        self.tableView.reloadData()
-//    }
-//
-//    func lgtmUsersOfEachArticlesResponse(lgtmUsersModelsOfEachArticles: [LgtmUsersModel]) {
-//        self.lgtmUsersModelsOfEachArticles = lgtmUsersModelsOfEachArticles
-//        self.tableView.reloadData()
-//    }
-//
-//    func errorResponse(error: Error) {
-//
-//    }
-//
-//    func isFetching(_ flag: Bool) {
-//        flag ? HUD.show(.progress) : HUD.hide()
-//    }
-//}
 
 extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,12 +76,14 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.titleLabel.text = articles[indexPath.row].title
         cell.userNameLabel.text = articles[indexPath.row].user.name
         
-        let lgtmUsersModel = lgtmUsersModelsOfEachArticles.first(where: { item in
+        //このセルの記事と対応したLGTMユーザーリストのモデルを取り出し
+        let lgtmUsersModel = lgtmUsersModels.first(where: { item in
             return item.articleId == article.id
         })
         cell.lgtmUsersModel = lgtmUsersModel
         cell.collectionView.reloadData()
         
+        //Storeのお気に入り記事一覧にこのセルの記事が含まれているかによってハートボタンの見た目を表示分け
         let storeValue = Store.shard.favoriteArticleListSubject.value
         let isFavoriteArticle = storeValue.contains(where: { item in
             item.id == article.id
@@ -102,6 +94,7 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
             cell.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
         
+        //ハートボタンタップ時の処理
         cell.favoriteButton.tapPublisher
             .sink { [weak self] element in
                 guard let self = self else { return }
