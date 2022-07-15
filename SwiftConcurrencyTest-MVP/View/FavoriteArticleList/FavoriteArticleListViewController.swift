@@ -12,8 +12,12 @@ import PKHUD
 import Kingfisher
 import CombineCocoa
 
+protocol FavoriteArticleListView: AnyObject {
+    
+}
+
 class FavoriteArticleListViewController: UIViewController, StoryboardInstantiatable {
-    private var presenter: FavoriteArticleListPresenter?
+    var presenter: FavoriteArticleListPresenter?
     private var articles: [ArticleEntity] = []
     private var lgtmUsersModelsOfEachArticles: [LgtmUsersModel] = []
 
@@ -30,10 +34,24 @@ class FavoriteArticleListViewController: UIViewController, StoryboardInstantiata
         tableView.register(UINib(nibName: ArticleCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: ArticleCell.reusableIdentifier)
         
         //PresenterのListenerに自身を代入
-        presenter = FavoriteArticleListPresenter(listener: self)
+//        presenter = FavoriteArticleListPresenter(listener: self)
     }
 
 }
+
+extension FavoriteArticleListViewController: FavoriteArticleListView {
+    
+}
+
+
+////PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
+//extension FavoriteArticleListViewController: FavoriteArticleListPresenterInterface {
+//    func showFavoriteArticles(articles: [ArticleEntity], lgtmUsersModelsOfEachArticles: [LgtmUsersModel]) {
+//        self.articles = articles
+//        self.lgtmUsersModelsOfEachArticles = lgtmUsersModelsOfEachArticles
+//        self.tableView.reloadData()
+//    }
+//}
 
 extension FavoriteArticleListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,19 +107,10 @@ extension FavoriteArticleListViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let article = articles[indexPath.row]
-        let vc = ArticleDetailViewController.instantiate()
-        let presenter = ArticleDetailPresenter(listener: vc, articleUrl: URL(string: article.url))
-        vc.presenter = presenter
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-//PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
-extension FavoriteArticleListViewController: FavoriteArticleListPresenterInterface {
-    func showFavoriteArticles(articles: [ArticleEntity], lgtmUsersModelsOfEachArticles: [LgtmUsersModel]) {
-        self.articles = articles
-        self.lgtmUsersModelsOfEachArticles = lgtmUsersModelsOfEachArticles
-        self.tableView.reloadData()
+//        let article = articles[indexPath.row]
+//        let vc = ArticleDetailViewController.instantiate()
+//        let presenter = ArticleDetailPresenter(listener: vc, articleUrl: URL(string: article.url))
+//        vc.presenter = presenter
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

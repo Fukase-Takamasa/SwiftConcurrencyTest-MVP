@@ -53,8 +53,8 @@ class MainTabBarController: UITabBarController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: userIconButton)
         
         Task {
-            try await userIconButton.kf
-                .setImage(with: URL(string: AuthorizedUserInterector.getAuthorizedUser()?.profileImageUrl ?? ""), for: .normal, placeholder: placeHolderImage)
+//            try await userIconButton.kf
+//                .setImage(with: URL(string: AuthorizedUserInterector.getAuthorizedUser()?.profileImageUrl ?? ""), for: .normal, placeholder: placeHolderImage)
         }
     }
     

@@ -12,8 +12,12 @@ import PKHUD
 import Kingfisher
 import CombineCocoa
 
+protocol ArticleListView: AnyObject {
+    
+}
+
 class ArticleListViewController: UIViewController, StoryboardInstantiatable {
-    private var presenter: ArticleListPresenter?
+    var presenter: ArticleListPresentation?
     private var articles: [ArticleEntity] = []
     private var lgtmUsersModelsOfEachArticles: [LgtmUsersModel] = []
 
@@ -30,11 +34,36 @@ class ArticleListViewController: UIViewController, StoryboardInstantiatable {
         tableView.register(UINib(nibName: ArticleCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: ArticleCell.reusableIdentifier)
         
         //PresenterのListenerに自身を代入
-        presenter = ArticleListPresenter(listener: self)
-        presenter?.getMonthlyPupularArticles()
+//        presenter = ArticleListPresenter(listener: self)
+//        presenter?.getMonthlyPupularArticles()
     }
 
 }
+
+extension ArticleListViewController: ArticleListView {
+    
+}
+
+//PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
+//extension ArticleListViewController: ArticleListPresenterInterface {
+//    func monthlyPopularArticlesResponse(articles: [ArticleEntity]) {
+//        self.articles = articles
+//        self.tableView.reloadData()
+//    }
+//
+//    func lgtmUsersOfEachArticlesResponse(lgtmUsersModelsOfEachArticles: [LgtmUsersModel]) {
+//        self.lgtmUsersModelsOfEachArticles = lgtmUsersModelsOfEachArticles
+//        self.tableView.reloadData()
+//    }
+//
+//    func errorResponse(error: Error) {
+//
+//    }
+//
+//    func isFetching(_ flag: Bool) {
+//        flag ? HUD.show(.progress) : HUD.hide()
+//    }
+//}
 
 extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,31 +119,10 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let article = articles[indexPath.row]
-        let vc = ArticleDetailViewController.instantiate()
-        let presenter = ArticleDetailPresenter(listener: vc, articleUrl: URL(string: article.url))
-        vc.presenter = presenter
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-//PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
-extension ArticleListViewController: ArticleListPresenterInterface {
-    func monthlyPopularArticlesResponse(articles: [ArticleEntity]) {
-        self.articles = articles
-        self.tableView.reloadData()
-    }
-    
-    func lgtmUsersOfEachArticlesResponse(lgtmUsersModelsOfEachArticles: [LgtmUsersModel]) {
-        self.lgtmUsersModelsOfEachArticles = lgtmUsersModelsOfEachArticles
-        self.tableView.reloadData()
-    }
-    
-    func errorResponse(error: Error) {
-        
-    }
-    
-    func isFetching(_ flag: Bool) {
-        flag ? HUD.show(.progress) : HUD.hide()
+//        let article = articles[indexPath.row]
+//        let vc = ArticleDetailViewController.instantiate()
+//        let presenter = ArticleDetailPresenter(listener: vc, articleUrl: URL(string: article.url))
+//        vc.presenter = presenter
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

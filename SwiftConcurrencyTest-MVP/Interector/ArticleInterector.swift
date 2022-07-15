@@ -9,11 +9,15 @@ import Foundation
 import Combine
 import Alamofire
 
-@MainActor
-final class ArticleInterector {
-    private static let store = Store.shard
+protocol ArticleUsecase: AnyObject {
+    func getPopularIosArticles() async throws -> [ArticleEntity]?
+}
+
+//@MainActor
+final class ArticleInterector: ArticleUsecase {
+    private let store = Store.shard
     
-    static func getPopularIosArticles() async throws -> [ArticleEntity]? {
+    func getPopularIosArticles() async throws -> [ArticleEntity]? {
         let parameters: Parameters = [
             "page": "1",
             "per_page": "10",

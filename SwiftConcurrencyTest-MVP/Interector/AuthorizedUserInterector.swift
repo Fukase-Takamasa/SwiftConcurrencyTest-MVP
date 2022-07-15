@@ -9,11 +9,15 @@ import Foundation
 import Combine
 import Alamofire
 
-@MainActor
-final class AuthorizedUserInterector {
-    private static let store = Store.shard
-    
-    static func getAuthorizedUser() async throws -> UserEntity? {
+protocol AuthorizedUserUsecase: AnyObject {
+    func getAuthorizedUser() async throws -> UserEntity?
+}
+
+//@MainActor
+class AuthorizedUserInterector: AuthorizedUserUsecase {
+    private let store = Store.shard
+        
+    func getAuthorizedUser() async throws -> UserEntity? {
         let task = AF.request(QiitaAPI.getAuthorizedUser).serializingDecodable(UserEntity.self)
         let response = await task.response
         print("statusCode: \(response.response?.statusCode ?? 0)")
