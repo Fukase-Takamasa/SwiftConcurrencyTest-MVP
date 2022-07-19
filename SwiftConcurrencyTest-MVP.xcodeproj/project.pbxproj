@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC08115D28868A12003F1CD2 /* PlaceHolderImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08115C28868A12003F1CD2 /* PlaceHolderImageUtil.swift */; };
 		BC1C2D8C287FFE21001CBFB5 /* LgtmUserIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2D8A287FFE21001CBFB5 /* LgtmUserIconCell.swift */; };
 		BC1C2D8D287FFE21001CBFB5 /* LgtmUserIconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1C2D8B287FFE21001CBFB5 /* LgtmUserIconCell.xib */; };
 		BC1C2D9328802181001CBFB5 /* LgtmUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2D9228802181001CBFB5 /* LgtmUsersModel.swift */; };
@@ -77,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC08115C28868A12003F1CD2 /* PlaceHolderImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderImageUtil.swift; sourceTree = "<group>"; };
 		BC1C2D8A287FFE21001CBFB5 /* LgtmUserIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LgtmUserIconCell.swift; sourceTree = "<group>"; };
 		BC1C2D8B287FFE21001CBFB5 /* LgtmUserIconCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LgtmUserIconCell.xib; sourceTree = "<group>"; };
 		BC1C2D9228802181001CBFB5 /* LgtmUsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LgtmUsersModel.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		BC1C2D8E28801D4F001CBFB5 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				BC08115C28868A12003F1CD2 /* PlaceHolderImageUtil.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				BC1C2D9E28803C97001CBFB5 /* FavoriteArticleListPresenter.swift in Sources */,
 				BC1C2DBA28818875001CBFB5 /* MainTabBarRouter.swift in Sources */,
 				BC1C2DAD288140CD001CBFB5 /* ArticleInterector.swift in Sources */,
+				BC08115D28868A12003F1CD2 /* PlaceHolderImageUtil.swift in Sources */,
 				BC1C2DBC28818889001CBFB5 /* MainTabBarPresenter.swift in Sources */,
 				BC7CE3912872D31F004D9DD8 /* Const.swift in Sources */,
 				BC7CE3A12872E554004D9DD8 /* ArticleCell.swift in Sources */,

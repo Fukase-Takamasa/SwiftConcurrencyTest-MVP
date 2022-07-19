@@ -28,6 +28,13 @@ class MainTabBarPresenter {
 
 extension MainTabBarPresenter: MainTabBarPresentation {
     func viewDidLoad() {
+        //BottomTabに対応した各画面の表示
         self.router.setupViewControllers()
+        
+        //NaviBar上のユーザーアイコン画像に使うユーザー情報を取得
+        Task {
+            let authorizedUser = try await authorizedUserInterector.getAuthorizedUser()
+            view?.updateUserIcon(imageUrl: authorizedUser?.profileImageUrl ?? "")
+        }
     }
 }
