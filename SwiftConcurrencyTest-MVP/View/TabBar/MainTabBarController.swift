@@ -18,6 +18,7 @@ protocol MainTabBarView: AnyObject {
 class MainTabBarController: UITabBarController {
     var presenter: MainTabBarPresentation?
     private var userIconButton: UIButton?
+    private var cancellables = [AnyCancellable]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,13 @@ class MainTabBarController: UITabBarController {
         setUserIconButton()
         
         self.presenter?.viewDidLoad()
+        
+        userIconButton?.tapPublisher
+            .sink { [weak self] element in
+                guard let self = self else { return }
+                let vc = MyPageViewController.instantiate()
+                self.present(vc, animated: true)
+            }.store(in: &cancellables)
     }
     
     private func setUserIconButton() {

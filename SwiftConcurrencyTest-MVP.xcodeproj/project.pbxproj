@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BC08115D28868A12003F1CD2 /* PlaceHolderImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08115C28868A12003F1CD2 /* PlaceHolderImageUtil.swift */; };
+		BC08116128868E40003F1CD2 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08116028868E40003F1CD2 /* MyPageViewController.swift */; };
+		BC08116328868E49003F1CD2 /* MyPageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC08116228868E49003F1CD2 /* MyPageViewController.storyboard */; };
 		BC1C2D8C287FFE21001CBFB5 /* LgtmUserIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2D8A287FFE21001CBFB5 /* LgtmUserIconCell.swift */; };
 		BC1C2D8D287FFE21001CBFB5 /* LgtmUserIconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1C2D8B287FFE21001CBFB5 /* LgtmUserIconCell.xib */; };
 		BC1C2D9328802181001CBFB5 /* LgtmUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2D9228802181001CBFB5 /* LgtmUsersModel.swift */; };
@@ -79,6 +81,8 @@
 
 /* Begin PBXFileReference section */
 		BC08115C28868A12003F1CD2 /* PlaceHolderImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderImageUtil.swift; sourceTree = "<group>"; };
+		BC08116028868E40003F1CD2 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		BC08116228868E49003F1CD2 /* MyPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPageViewController.storyboard; sourceTree = "<group>"; };
 		BC1C2D8A287FFE21001CBFB5 /* LgtmUserIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LgtmUserIconCell.swift; sourceTree = "<group>"; };
 		BC1C2D8B287FFE21001CBFB5 /* LgtmUserIconCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LgtmUserIconCell.xib; sourceTree = "<group>"; };
 		BC1C2D9228802181001CBFB5 /* LgtmUsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LgtmUsersModel.swift; sourceTree = "<group>"; };
@@ -160,6 +164,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC08115E28868E09003F1CD2 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				BC6CFCC728784FF600441CA8 /* MainTabBarController.swift */,
+				BCCA1C672872C08D006B3493 /* Main.storyboard */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		BC08115F28868E1C003F1CD2 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				BC08116028868E40003F1CD2 /* MyPageViewController.swift */,
+				BC08116228868E49003F1CD2 /* MyPageViewController.storyboard */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
 		BC1C2D8E28801D4F001CBFB5 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,8 +282,8 @@
 		BC7CE3862872D1B9004D9DD8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BC6CFCC728784FF600441CA8 /* MainTabBarController.swift */,
-				BCCA1C672872C08D006B3493 /* Main.storyboard */,
+				BC08115E28868E09003F1CD2 /* TabBar */,
+				BC08115F28868E1C003F1CD2 /* MyPage */,
 				BC6CFCCB2878585400441CA8 /* ArticleList */,
 				BC765EE7287D8F610025A3B3 /* ArticleDetail */,
 				BC1C2D982880353D001CBFB5 /* FavoriteArticleList */,
@@ -488,6 +510,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC08116328868E49003F1CD2 /* MyPageViewController.storyboard in Resources */,
 				BC6CFCC628784EFF00441CA8 /* ArticleListViewController.storyboard in Resources */,
 				BC1C2D9C28803572001CBFB5 /* FavoriteArticleListViewController.storyboard in Resources */,
 				BC7CE3A22872E554004D9DD8 /* ArticleCell.xib in Resources */,
@@ -549,6 +572,7 @@
 				BC08115D28868A12003F1CD2 /* PlaceHolderImageUtil.swift in Sources */,
 				BC1C2DBC28818889001CBFB5 /* MainTabBarPresenter.swift in Sources */,
 				BC7CE3912872D31F004D9DD8 /* Const.swift in Sources */,
+				BC08116128868E40003F1CD2 /* MyPageViewController.swift in Sources */,
 				BC7CE3A12872E554004D9DD8 /* ArticleCell.swift in Sources */,
 				BC765EEE287D928E0025A3B3 /* ArticleDetailPresenter.swift in Sources */,
 				BC6CFCC428784EDC00441CA8 /* ArticleListViewController.swift in Sources */,
