@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ArticleDetailWireframe: AnyObject {
-//    func showArticleDetail(_ article: ArticleEntity)
+    
 }
 
 @MainActor
@@ -20,7 +20,7 @@ class ArticleDetailRouter {
     }
     
     // - DI
-    static func assembleModules() -> UIViewController {
+    static func assembleModules() -> ArticleDetailViewController {
         let view = ArticleDetailViewController.instantiate()
         let router = ArticleDetailRouter(viewController: view)
         let interector = ArticleInterector()
@@ -32,7 +32,5 @@ class ArticleDetailRouter {
 }
 
 extension ArticleDetailRouter: ArticleDetailWireframe {
-//    func showArticleDetail(_ article: ArticleEntity) {
-//
-//    }
+
 }

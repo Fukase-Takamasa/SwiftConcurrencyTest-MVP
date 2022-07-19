@@ -10,6 +10,7 @@ import Combine
 
 protocol ArticleListPresentation: AnyObject {
     func viewDidLoad()
+    func tableViewCellTapped(article: ArticleEntity)
 }
 
 @MainActor
@@ -58,5 +59,9 @@ extension ArticleListPresenter: ArticleListPresentation {
             //成功レスポンスを受け渡して処理をさせる
             self.view?.showLgtmUsersOfEachArticles(lgtmUsersModels: lgtmUsersModels)
         }
+    }
+    
+    func tableViewCellTapped(article: ArticleEntity) {
+        router.showArticleDetail(article)
     }
 }

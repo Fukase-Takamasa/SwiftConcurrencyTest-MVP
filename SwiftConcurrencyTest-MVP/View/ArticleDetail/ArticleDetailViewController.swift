@@ -12,12 +12,13 @@ import WebKit
 import SkeletonView
 
 protocol ArticleDetailView: AnyObject {
-    
+    func showWebViewContent()
 }
 
 class ArticleDetailViewController: UIViewController, StoryboardInstantiatable {
     
     var presenter: ArticleDetailPresenter?
+    var article: ArticleEntity?
 
     @IBOutlet weak var webView: WKWebView!
     
@@ -25,8 +26,8 @@ class ArticleDetailViewController: UIViewController, StoryboardInstantiatable {
         super.viewDidLoad()
         
         setSwipeBack()
-//        setupWebView()
-//        presenter?.showWebViewContent()
+        setupWebView()
+        presenter?.viewDidLoad()
     }
 
     func setupWebView() {
@@ -46,16 +47,10 @@ class ArticleDetailViewController: UIViewController, StoryboardInstantiatable {
     }
 }
 
-//PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
-//extension ArticleDetailViewController: ArticleDetailPresenterInterface {
-//    func openUrl(url: URL) {
-//        let request = URLRequest(url: url)
-//        webView.load(request)
-//    }
-//}
-
 extension ArticleDetailViewController: ArticleDetailView {
-    
+    func showWebViewContent() {
+        openURL(article?.url)
+    }
 }
 
 extension ArticleDetailViewController: WKUIDelegate, WKNavigationDelegate {

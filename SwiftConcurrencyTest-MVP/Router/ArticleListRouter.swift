@@ -38,6 +38,8 @@ class ArticleListRouter {
 
 extension ArticleListRouter: ArticleListWireframe {
     func showArticleDetail(_ article: ArticleEntity) {
-        
+        let articleDetailVC = ArticleDetailRouter.assembleModules()
+        articleDetailVC.article = article
+        self.viewController.navigationController?.pushViewController(articleDetailVC, animated: true)
     }
 }

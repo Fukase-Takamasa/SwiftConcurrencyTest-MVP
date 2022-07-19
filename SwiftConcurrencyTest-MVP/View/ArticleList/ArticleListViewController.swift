@@ -112,10 +112,6 @@ extension ArticleListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let article = articles[indexPath.row]
-//        let vc = ArticleDetailViewController.instantiate()
-//        let presenter = ArticleDetailPresenter(listener: vc, articleUrl: URL(string: article.url))
-//        vc.presenter = presenter
-//        self.navigationController?.pushViewController(vc, animated: true)
+        presenter?.tableViewCellTapped(article: articles[indexPath.row])
     }
 }
