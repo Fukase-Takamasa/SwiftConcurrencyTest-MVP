@@ -10,6 +10,8 @@
 		BC08115D28868A12003F1CD2 /* PlaceHolderImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08115C28868A12003F1CD2 /* PlaceHolderImageUtil.swift */; };
 		BC08116128868E40003F1CD2 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08116028868E40003F1CD2 /* MyPageViewController.swift */; };
 		BC08116328868E49003F1CD2 /* MyPageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC08116228868E49003F1CD2 /* MyPageViewController.storyboard */; };
+		BC08116528869298003F1CD2 /* MyPageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC08116428869298003F1CD2 /* MyPageRouter.swift */; };
+		BC081167288692A1003F1CD2 /* MyPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC081166288692A1003F1CD2 /* MyPagePresenter.swift */; };
 		BC1C2D8C287FFE21001CBFB5 /* LgtmUserIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2D8A287FFE21001CBFB5 /* LgtmUserIconCell.swift */; };
 		BC1C2D8D287FFE21001CBFB5 /* LgtmUserIconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1C2D8B287FFE21001CBFB5 /* LgtmUserIconCell.xib */; };
 		BC1C2D9328802181001CBFB5 /* LgtmUsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2D9228802181001CBFB5 /* LgtmUsersModel.swift */; };
@@ -83,6 +85,8 @@
 		BC08115C28868A12003F1CD2 /* PlaceHolderImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderImageUtil.swift; sourceTree = "<group>"; };
 		BC08116028868E40003F1CD2 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		BC08116228868E49003F1CD2 /* MyPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPageViewController.storyboard; sourceTree = "<group>"; };
+		BC08116428869298003F1CD2 /* MyPageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRouter.swift; sourceTree = "<group>"; };
+		BC081166288692A1003F1CD2 /* MyPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPagePresenter.swift; sourceTree = "<group>"; };
 		BC1C2D8A287FFE21001CBFB5 /* LgtmUserIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LgtmUserIconCell.swift; sourceTree = "<group>"; };
 		BC1C2D8B287FFE21001CBFB5 /* LgtmUserIconCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LgtmUserIconCell.xib; sourceTree = "<group>"; };
 		BC1C2D9228802181001CBFB5 /* LgtmUsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LgtmUsersModel.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				BC1C2DB928818875001CBFB5 /* MainTabBarRouter.swift */,
+				BC08116428869298003F1CD2 /* MyPageRouter.swift */,
 				BC1C2DB1288142A4001CBFB5 /* ArticleListRouter.swift */,
 				BC1C2DB3288142B2001CBFB5 /* ArticleDetailRouter.swift */,
 				BC1C2DB5288142C5001CBFB5 /* FavoriteArticleListRouter.swift */,
@@ -272,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				BC1C2DBB28818889001CBFB5 /* MainTabBarPresenter.swift */,
+				BC081166288692A1003F1CD2 /* MyPagePresenter.swift */,
 				BC7CE3A32872F1C2004D9DD8 /* ArticleListPresenter.swift */,
 				BC765EED287D928E0025A3B3 /* ArticleDetailPresenter.swift */,
 				BC1C2D9D28803C97001CBFB5 /* FavoriteArticleListPresenter.swift */,
@@ -552,6 +558,7 @@
 				BC1C2DA928813CB3001CBFB5 /* UserEntity.swift in Sources */,
 				BC765EE6287D8DF50025A3B3 /* UIViewController+Extension.swift in Sources */,
 				BC1C2DB2288142A4001CBFB5 /* ArticleListRouter.swift in Sources */,
+				BC081167288692A1003F1CD2 /* MyPagePresenter.swift in Sources */,
 				BCCA1C622872C08D006B3493 /* AppDelegate.swift in Sources */,
 				BC7CE3922872D31F004D9DD8 /* APIConst.swift in Sources */,
 				BC1C2D9328802181001CBFB5 /* LgtmUsersModel.swift in Sources */,
@@ -571,6 +578,7 @@
 				BC1C2DAD288140CD001CBFB5 /* ArticleInterector.swift in Sources */,
 				BC08115D28868A12003F1CD2 /* PlaceHolderImageUtil.swift in Sources */,
 				BC1C2DBC28818889001CBFB5 /* MainTabBarPresenter.swift in Sources */,
+				BC08116528869298003F1CD2 /* MyPageRouter.swift in Sources */,
 				BC7CE3912872D31F004D9DD8 /* Const.swift in Sources */,
 				BC08116128868E40003F1CD2 /* MyPageViewController.swift in Sources */,
 				BC7CE3A12872E554004D9DD8 /* ArticleCell.swift in Sources */,

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 protocol ArticleDetailPresentation: AnyObject {
     func viewDidLoad()
@@ -18,8 +17,6 @@ class ArticleDetailPresenter {
     private let router: ArticleDetailWireframe
     private let articleInterector: ArticleUsecase
     
-    private var cancellables = [AnyCancellable]()
-
     init(view: ArticleDetailView,
          router: ArticleDetailWireframe,
          articleInterector: ArticleUsecase) {

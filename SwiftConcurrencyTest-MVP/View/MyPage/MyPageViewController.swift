@@ -11,7 +11,12 @@ import InstantiateStandard
 import Combine
 import Kingfisher
 
+protocol MyPageView: AnyObject {
+    func showUserInformation(user: UserEntity)
+}
+
 class MyPageViewController: UIViewController, StoryboardInstantiatable {
+    var presenter: MyPagePresentation?
     private var cancellables = [AnyCancellable]()
     
     @IBOutlet weak var imageView: UIImageView!
@@ -21,17 +26,16 @@ class MyPageViewController: UIViewController, StoryboardInstantiatable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        imageView.image = PlaceHolderImageUtil.userIconPlaceHolderImage()
         
-        Store.shard.authorizedUserResponse
-            .sink { [weak self] element in
-                guard let self = self else { return }
-                guard let user = element else { return }
-                self.imageView.kf.setImage(with: URL(string: user.profileImageUrl ?? ""))
-                self.userNameLabel.text = user.name
-                self.userIdLabel.text = "@" + (user.id ?? "")
-                self.descriptionLabel.text = user.description
-            }.store(in: &cancellables)}
+        presenter?.viewDidLoad()
+    }
+}
 
+extension MyPageViewController: MyPageView {
+    func showUserInformation(user: UserEntity) {
+        self.imageView.kf.setImage(with: URL(string: user.profileImageUrl ?? ""))
+        self.userNameLabel.text = user.name
+        self.userIdLabel.text = "@" + (user.id ?? "")
+        self.descriptionLabel.text = user.description
+    }
 }

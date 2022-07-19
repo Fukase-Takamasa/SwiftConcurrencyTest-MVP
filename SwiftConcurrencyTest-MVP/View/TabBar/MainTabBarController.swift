@@ -30,8 +30,7 @@ class MainTabBarController: UITabBarController {
         userIconButton?.tapPublisher
             .sink { [weak self] element in
                 guard let self = self else { return }
-                let vc = MyPageViewController.instantiate()
-                self.present(vc, animated: true)
+                self.presenter?.userIconButtonTapped()
             }.store(in: &cancellables)
     }
     

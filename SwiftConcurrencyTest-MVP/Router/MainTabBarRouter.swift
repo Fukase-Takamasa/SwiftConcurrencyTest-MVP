@@ -9,6 +9,7 @@ import UIKit
 
 protocol MainTabBarWireframe: AnyObject {
     func setupViewControllers()
+    func showMyPage()
 }
 
 @MainActor
@@ -48,6 +49,11 @@ extension MainTabBarRouter: MainTabBarWireframe {
         
         self.tabBarViewController.viewControllers = vcs.map{UINavigationController(rootViewController: $0)}
         self.tabBarViewController.setViewControllers(vcs, animated: false)
+    }
+    
+    func showMyPage() {
+        let myPageVC = MyPageRouter.assembleModules()
+        self.tabBarViewController.present(myPageVC, animated: true)
     }
 }
 

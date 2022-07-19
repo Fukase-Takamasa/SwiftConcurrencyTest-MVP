@@ -9,6 +9,7 @@ import Foundation
 
 protocol MainTabBarPresentation: AnyObject {
     func viewDidLoad()
+    func userIconButtonTapped()
 }
 
 @MainActor
@@ -36,5 +37,9 @@ extension MainTabBarPresenter: MainTabBarPresentation {
             let authorizedUser = try await authorizedUserInterector.getAuthorizedUser()
             view?.updateUserIcon(imageUrl: authorizedUser?.profileImageUrl ?? "")
         }
+    }
+    
+    func userIconButtonTapped() {
+        router.showMyPage()
     }
 }

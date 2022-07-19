@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 protocol ArticleListPresentation: AnyObject {
     func viewDidLoad()
@@ -19,8 +18,6 @@ class ArticleListPresenter {
     private let router: ArticleListWireframe
     private let articleInterector: ArticleUsecase
     private let lgtmInterector: LgtmUsecase
-
-    private var cancellables = [AnyCancellable]()
         
     init(view: ArticleListView,
          router: ArticleListWireframe,
