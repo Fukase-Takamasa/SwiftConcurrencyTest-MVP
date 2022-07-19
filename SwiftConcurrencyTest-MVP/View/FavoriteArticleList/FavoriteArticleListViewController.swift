@@ -13,13 +13,13 @@ import Kingfisher
 import CombineCocoa
 
 protocol FavoriteArticleListView: AnyObject {
-    
+    func showArticlesAndLgtmUsers(articles: [ArticleEntity], lgtmUsersModels: [LgtmUsersModel])
 }
 
 class FavoriteArticleListViewController: UIViewController, StoryboardInstantiatable {
     var presenter: FavoriteArticleListPresenter?
     private var articles: [ArticleEntity] = []
-    private var lgtmUsersModelsOfEachArticles: [LgtmUsersModel] = []
+    private var lgtmUsersModels: [LgtmUsersModel] = []
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -33,25 +33,18 @@ class FavoriteArticleListViewController: UIViewController, StoryboardInstantiata
         
         tableView.register(UINib(nibName: ArticleCell.reusableIdentifier, bundle: nil), forCellReuseIdentifier: ArticleCell.reusableIdentifier)
         
-        //PresenterのListenerに自身を代入
-//        presenter = FavoriteArticleListPresenter(listener: self)
+        self.presenter?.viewDidLoad()
     }
 
 }
 
 extension FavoriteArticleListViewController: FavoriteArticleListView {
-    
+    func showArticlesAndLgtmUsers(articles: [ArticleEntity], lgtmUsersModels: [LgtmUsersModel]) {
+        self.articles = articles
+        self.lgtmUsersModels = lgtmUsersModels
+        self.tableView.reloadData()
+    }
 }
-
-
-////PresenterのProtocolに準拠し、各種メソッドが呼び出された時の処理を実装
-//extension FavoriteArticleListViewController: FavoriteArticleListPresenterInterface {
-//    func showFavoriteArticles(articles: [ArticleEntity], lgtmUsersModelsOfEachArticles: [LgtmUsersModel]) {
-//        self.articles = articles
-//        self.lgtmUsersModelsOfEachArticles = lgtmUsersModelsOfEachArticles
-//        self.tableView.reloadData()
-//    }
-//}
 
 extension FavoriteArticleListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,7 +67,7 @@ extension FavoriteArticleListViewController: UITableViewDelegate, UITableViewDat
         cell.titleLabel.text = articles[indexPath.row].title
         cell.userNameLabel.text = articles[indexPath.row].user.name
         
-        let lgtmUsersModel = lgtmUsersModelsOfEachArticles.first(where: { item in
+        let lgtmUsersModel = lgtmUsersModels.first(where: { item in
             return item.articleId == article.id
         })
         cell.lgtmUsersModel = lgtmUsersModel
@@ -107,10 +100,6 @@ extension FavoriteArticleListViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let article = articles[indexPath.row]
-//        let vc = ArticleDetailViewController.instantiate()
-//        let presenter = ArticleDetailPresenter(listener: vc, articleUrl: URL(string: article.url))
-//        vc.presenter = presenter
-//        self.navigationController?.pushViewController(vc, animated: true)
+        presenter?.tableViewCellTapped(article: articles[indexPath.row])
     }
 }

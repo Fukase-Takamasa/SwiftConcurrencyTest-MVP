@@ -8,7 +8,7 @@
 import UIKit
 
 protocol FavoriteArticleListWireframe: AnyObject {
-//    func showArticleDetail(_ article: ArticleEntity)
+    func showArticleDetail(_ article: ArticleEntity)
 }
 
 @MainActor
@@ -32,7 +32,9 @@ class FavoriteArticleListRouter {
 }
 
 extension FavoriteArticleListRouter: FavoriteArticleListWireframe {
-//    func showArticleDetail(_ article: ArticleEntity) {
-//
-//    }
+    func showArticleDetail(_ article: ArticleEntity) {
+        let articleDetailVC = ArticleDetailRouter.assembleModules()
+        articleDetailVC.article = article
+        self.viewController.navigationController?.pushViewController(articleDetailVC, animated: true)
+    }
 }
