@@ -62,6 +62,7 @@
 		BCCA1C792872C08E006B3493 /* SwiftConcurrencyTest_MVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA1C782872C08E006B3493 /* SwiftConcurrencyTest_MVPTests.swift */; };
 		BCCA1C832872C08E006B3493 /* SwiftConcurrencyTest_MVPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA1C822872C08E006B3493 /* SwiftConcurrencyTest_MVPUITests.swift */; };
 		BCCA1C852872C08E006B3493 /* SwiftConcurrencyTest_MVPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA1C842872C08E006B3493 /* SwiftConcurrencyTest_MVPUITestsLaunchTests.swift */; };
+		BCCBDFE22889675000D8BA31 /* ArticleListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCBDFE12889675000D8BA31 /* ArticleListUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 		BCCA1C7E2872C08E006B3493 /* SwiftConcurrencyTest-MVPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftConcurrencyTest-MVPUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCA1C822872C08E006B3493 /* SwiftConcurrencyTest_MVPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftConcurrencyTest_MVPUITests.swift; sourceTree = "<group>"; };
 		BCCA1C842872C08E006B3493 /* SwiftConcurrencyTest_MVPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftConcurrencyTest_MVPUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BCCBDFE12889675000D8BA31 /* ArticleListUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				BC08115C28868A12003F1CD2 /* PlaceHolderImageUtil.swift */,
+				BCCBDFE12889675000D8BA31 /* ArticleListUtil.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				BC1C2DBC28818889001CBFB5 /* MainTabBarPresenter.swift in Sources */,
 				BC08116528869298003F1CD2 /* MyPageRouter.swift in Sources */,
 				BC7CE3912872D31F004D9DD8 /* Const.swift in Sources */,
+				BCCBDFE22889675000D8BA31 /* ArticleListUtil.swift in Sources */,
 				BC08116128868E40003F1CD2 /* MyPageViewController.swift in Sources */,
 				BC7CE3A12872E554004D9DD8 /* ArticleCell.swift in Sources */,
 				BC765EEE287D928E0025A3B3 /* ArticleDetailPresenter.swift in Sources */,

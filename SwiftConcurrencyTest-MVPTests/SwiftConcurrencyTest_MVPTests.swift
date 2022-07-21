@@ -7,30 +7,56 @@
 
 import XCTest
 @testable import SwiftConcurrencyTest_MVP
+import Combine
 
 class SwiftConcurrencyTest_MVPTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_addFavoriteArticle() {
+        let mockUserEntity = UserEntity(
+            name: "testName",
+            id: "testId",
+            description: "testDescription",
+            location: "testLocation",
+            profileImageUrl: "testUrl")
+        
+        let mockArticleEntity = ArticleEntity(
+            id: "testId",
+            title: "testTitle",
+            url: "testUrl",
+            user: mockUserEntity,
+            likesCount: 0)
+        
+        let mockStoreFavoriteArticleListSubject = CurrentValueSubject<[ArticleEntity], Never>([])
+        
+        let result1 = mockStoreFavoriteArticleListSubject.value.contains(where: { item in
+            item.id == mockArticleEntity.id
+        })
+        
+        XCTAssertEqual(false, result1)
+        
+        //現在のstoreValueにタップしたセルのarticleを追加したリストを流す
+        mockStoreFavoriteArticleListSubject.send(
+            mockStoreFavoriteArticleListSubject.value + [mockArticleEntity]
+        )
+        
+        let result2 = mockStoreFavoriteArticleListSubject.value.contains(where: { item in
+            item.id == mockArticleEntity.id
+        })
+        
+        XCTAssertEqual(true, result2)
+        
+        //現在のstoreValueからタップしたセルのarticleを削除したリストを流す
+        mockStoreFavoriteArticleListSubject.send(
+            mockStoreFavoriteArticleListSubject.value.filter({ item in
+                item.id != mockArticleEntity.id
+            })
+        )
+        
+        let result3 = mockStoreFavoriteArticleListSubject.value.contains(where: { item in
+            item.id == mockArticleEntity.id
+        })
+        
+        XCTAssertEqual(false, result3)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+    
 }

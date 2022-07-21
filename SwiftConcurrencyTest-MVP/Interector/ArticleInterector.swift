@@ -11,11 +11,11 @@ import Alamofire
 
 protocol ArticleUsecase: AnyObject {
     func getPopularIosArticles() async throws -> [ArticleEntity]?
+    func addFavoriteArticle(article: ArticleEntity)
+    func removeFavoriteArticle(article: ArticleEntity)
 }
 
 final class ArticleInterector: ArticleUsecase {
-    private let store = Store.shard
-    
     func getPopularIosArticles() async throws -> [ArticleEntity]? {
         let parameters: Parameters = [
             "page": "1",
@@ -32,7 +32,7 @@ final class ArticleInterector: ArticleUsecase {
             let value = response.value
             print("getPopularIosArticles success value: \(String(describing: value))")
             //成功レスポンスから取り出した値をStoreに格納
-            store.popularIosArticlesResponseSubject.send(value)
+            Store.shard.popularIosArticlesResponseSubject.send(value)
             
             //呼び出し元にも値を返却
             return value
@@ -46,5 +46,21 @@ final class ArticleInterector: ArticleUsecase {
             print("getPopularIosArticles response error: \(afError)")
             throw afError
         }
+    }
+    
+    func addFavoriteArticle(article: ArticleEntity) {
+        //現在のstoreのvalueにarticleを追加したリストを流す
+        Store.shard.favoriteArticleListSubject.send(
+            Store.shard.favoriteArticleListSubject.value + [article]
+        )
+    }
+    
+    func removeFavoriteArticle(article: ArticleEntity) {
+        //現在のstoreのvalueからarticleを削除したリストを流す
+        Store.shard.favoriteArticleListSubject.send(
+            Store.shard.favoriteArticleListSubject.value.filter({ item in
+                item.id != article.id
+            })
+        )
     }
 }

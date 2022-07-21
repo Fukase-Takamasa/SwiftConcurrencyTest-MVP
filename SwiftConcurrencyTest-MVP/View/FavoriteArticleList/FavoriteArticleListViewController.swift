@@ -14,6 +14,7 @@ import CombineCocoa
 
 protocol FavoriteArticleListView: AnyObject {
     func showArticlesAndLgtmUsers(articles: [ArticleEntity], lgtmUsersModels: [LgtmUsersModel])
+    func reloadTableView()
 }
 
 class FavoriteArticleListViewController: UIViewController, StoryboardInstantiatable {
@@ -42,6 +43,10 @@ extension FavoriteArticleListViewController: FavoriteArticleListView {
     func showArticlesAndLgtmUsers(articles: [ArticleEntity], lgtmUsersModels: [LgtmUsersModel]) {
         self.articles = articles
         self.lgtmUsersModels = lgtmUsersModels
+        self.tableView.reloadData()
+    }
+    
+    func reloadTableView() {
         self.tableView.reloadData()
     }
 }
@@ -73,10 +78,10 @@ extension FavoriteArticleListViewController: UITableViewDelegate, UITableViewDat
         cell.lgtmUsersModel = lgtmUsersModel
         cell.collectionView.reloadData()
         
-        let storeValue = Store.shard.favoriteArticleListSubject.value
-        let isFavoriteArticle = storeValue.contains(where: { item in
-            item.id == article.id
-        })
+        let isFavoriteArticle = ArticleListUtil.isFavoriteArticle(
+            favoriteArticleList: Store.shard.favoriteArticleListSubject.value,
+            article: article)
+        
         if isFavoriteArticle {
             cell.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }else {
@@ -86,14 +91,7 @@ extension FavoriteArticleListViewController: UITableViewDelegate, UITableViewDat
         cell.favoriteButton.tapPublisher
             .sink { [weak self] element in
                 guard let self = self else { return }
-                if isFavoriteArticle {
-                    //現在のstoreValueからタップしたセルのarticleを削除したリストを流す
-                    Store.shard.favoriteArticleListSubject.send(storeValue.filter({ item in item.id != article.id}))
-                }else {
-                    //現在のstoreValueにタップしたセルのarticleを追加したリストを流す
-                    Store.shard.favoriteArticleListSubject.send(storeValue + [article])
-                }
-                self.tableView.reloadData()
+                self.presenter?.favoriteButtonTapped(article: article)
             }.store(in: &cell.cancellables)
         
         return cell

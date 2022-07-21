@@ -10,6 +10,7 @@ import Combine
 
 protocol FavoriteArticleListPresentation: AnyObject {
     func viewDidLoad()
+    func favoriteButtonTapped(article: ArticleEntity)
     func tableViewCellTapped(article: ArticleEntity)
 }
 
@@ -42,6 +43,25 @@ extension FavoriteArticleListPresenter: FavoriteArticleListPresentation {
             //値を受け渡して表示させる
             self.view?.showArticlesAndLgtmUsers(articles: favoriteArticleList, lgtmUsersModels: lgtmUsersModelsResponse ?? [])
         }.store(in: &cancellables)
+    }
+    
+    func favoriteButtonTapped(article: ArticleEntity) {
+        //既にfavoriteArticleListに存在するかをチェック
+        let isFavoriteArticle = ArticleListUtil.isFavoriteArticle(
+            favoriteArticleList: Store.shard.favoriteArticleListSubject.value,
+            article: article)
+        
+        if isFavoriteArticle {
+            //既にListに存在するので削除
+            articleInterector.removeFavoriteArticle(article: article)
+            
+        }else {
+            //まだListに存在しないので追加
+            articleInterector.addFavoriteArticle(article: article)
+        }
+        
+        //ViewにtableViewの再描画をさせる
+        view?.reloadTableView()
     }
     
     func tableViewCellTapped(article: ArticleEntity) {

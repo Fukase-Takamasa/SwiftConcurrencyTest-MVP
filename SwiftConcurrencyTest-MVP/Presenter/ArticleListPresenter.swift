@@ -9,6 +9,7 @@ import Foundation
 
 protocol ArticleListPresentation: AnyObject {
     func viewDidLoad()
+    func favoriteButtonTapped(article: ArticleEntity)
     func tableViewCellTapped(article: ArticleEntity)
 }
 
@@ -56,6 +57,25 @@ extension ArticleListPresenter: ArticleListPresentation {
             //成功レスポンスを受け渡して処理をさせる
             self.view?.showLgtmUsersOfEachArticles(lgtmUsersModels: lgtmUsersModels)
         }
+    }
+    
+    func favoriteButtonTapped(article: ArticleEntity) {
+        //既にfavoriteArticleListに存在するかをチェック
+        let isFavoriteArticle = ArticleListUtil.isFavoriteArticle(
+            favoriteArticleList: Store.shard.favoriteArticleListSubject.value,
+            article: article)
+        
+        if isFavoriteArticle {
+            //既にListに存在するので削除
+            articleInterector.removeFavoriteArticle(article: article)
+            
+        }else {
+            //まだListに存在しないので追加
+            articleInterector.addFavoriteArticle(article: article)
+        }
+        
+        //ViewにtableViewの再描画をさせる
+        view?.reloadTableView()
     }
     
     func tableViewCellTapped(article: ArticleEntity) {
