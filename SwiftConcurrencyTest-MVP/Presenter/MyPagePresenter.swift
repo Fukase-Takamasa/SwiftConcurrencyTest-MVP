@@ -16,16 +16,16 @@ protocol MyPagePresentation: AnyObject {
 class MyPagePresenter {
     private weak var view: MyPageView?
     private let router: MyPageWireframe
-    private let authorizedUserInterector: AuthorizedUserUsecase
+    private let authorizedUserInteractor: AuthorizedUserUsecase
     
     private var cancellables = [AnyCancellable]()
 
     init(view: MyPageView,
          router: MyPageWireframe,
-         authorizedUserInterector: AuthorizedUserUsecase) {
+         authorizedUserInteractor: AuthorizedUserUsecase) {
         self.view = view
         self.router = router
-        self.authorizedUserInterector = authorizedUserInterector
+        self.authorizedUserInteractor = authorizedUserInteractor
     }
 }
 

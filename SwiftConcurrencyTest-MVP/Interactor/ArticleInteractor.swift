@@ -1,5 +1,5 @@
 //
-//  ArticleInterector.swift
+//  ArticleInteractor.swift
 //  SwiftConcurrencyTest-MVP
 //
 //  Created by ウルトラ深瀬 on 15/7/22.
@@ -15,7 +15,7 @@ protocol ArticleUsecase: AnyObject {
     func removeFavoriteArticle(article: ArticleEntity)
 }
 
-final class ArticleInterector: ArticleUsecase {
+final class ArticleInteractor: ArticleUsecase {
     func getPopularIosArticles() async throws -> [ArticleEntity]? {
         let parameters: Parameters = [
             "page": "1",

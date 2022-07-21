@@ -16,14 +16,14 @@ protocol MainTabBarPresentation: AnyObject {
 class MainTabBarPresenter {
     private weak var view: MainTabBarView?
     private let router: MainTabBarWireframe
-    private let authorizedUserInterector: AuthorizedUserUsecase
+    private let authorizedUserInteractor: AuthorizedUserUsecase
     
     init(view: MainTabBarView,
          router: MainTabBarWireframe,
-         authorizedUserInterector: AuthorizedUserUsecase) {
+         authorizedUserInteractor: AuthorizedUserUsecase) {
         self.view = view
         self.router = router
-        self.authorizedUserInterector = authorizedUserInterector
+        self.authorizedUserInteractor = authorizedUserInteractor
     }
 }
 
@@ -34,7 +34,7 @@ extension MainTabBarPresenter: MainTabBarPresentation {
         
         //NaviBar上のユーザーアイコン画像に使うユーザー情報を取得
         Task {
-            let authorizedUser = try await authorizedUserInterector.getAuthorizedUser()
+            let authorizedUser = try await authorizedUserInteractor.getAuthorizedUser()
             view?.updateUserIcon(imageUrl: authorizedUser?.profileImageUrl ?? "")
         }
     }

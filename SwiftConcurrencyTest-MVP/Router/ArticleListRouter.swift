@@ -23,13 +23,13 @@ class ArticleListRouter {
     static func assembleModules() -> UIViewController {
         let view = ArticleListViewController.instantiate()
         let router = ArticleListRouter(viewController: view)
-        let articleInterector = ArticleInterector()
-        let lgtmInterector = LgtmInterector()
+        let articleInteractor = ArticleInteractor()
+        let lgtmInteractor = LgtmInteractor()
         let presenter = ArticleListPresenter(
             view: view,
             router: router,
-            articleInterector: articleInterector,
-            lgtmInterector: lgtmInterector)
+            articleInteractor: articleInteractor,
+            lgtmInteractor: lgtmInteractor)
         
         view.presenter = presenter
         return view

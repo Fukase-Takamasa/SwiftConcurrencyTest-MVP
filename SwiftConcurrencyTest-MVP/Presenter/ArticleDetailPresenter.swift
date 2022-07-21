@@ -15,14 +15,14 @@ protocol ArticleDetailPresentation: AnyObject {
 class ArticleDetailPresenter {
     private weak var view: ArticleDetailView?
     private let router: ArticleDetailWireframe
-    private let articleInterector: ArticleUsecase
+    private let articleInteractor: ArticleUsecase
     
     init(view: ArticleDetailView,
          router: ArticleDetailWireframe,
-         articleInterector: ArticleUsecase) {
+         articleInteractor: ArticleUsecase) {
         self.view = view
         self.router = router
-        self.articleInterector = articleInterector
+        self.articleInteractor = articleInteractor
     }
 }
 

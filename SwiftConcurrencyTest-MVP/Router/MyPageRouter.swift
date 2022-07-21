@@ -23,8 +23,8 @@ class MyPageRouter {
     static func assembleModules() -> MyPageViewController {
         let view = MyPageViewController.instantiate()
         let router = MyPageRouter(viewController: view)
-        let interector = AuthorizedUserInterector()
-        let presenter = MyPagePresenter(view: view, router: router, authorizedUserInterector: interector)
+        let interactor = AuthorizedUserInteractor()
+        let presenter = MyPagePresenter(view: view, router: router, authorizedUserInteractor: interactor)
         
         view.presenter = presenter
         return view

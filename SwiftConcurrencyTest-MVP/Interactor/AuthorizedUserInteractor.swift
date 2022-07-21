@@ -1,5 +1,5 @@
 //
-//  AuthorizedUserInterector.swift
+//  AuthorizedUserInteractor.swift
 //  SwiftConcurrencyTest-MVP
 //
 //  Created by ウルトラ深瀬 on 4/7/22.
@@ -13,7 +13,7 @@ protocol AuthorizedUserUsecase: AnyObject {
     func getAuthorizedUser() async throws -> UserEntity?
 }
 
-class AuthorizedUserInterector: AuthorizedUserUsecase {
+class AuthorizedUserInteractor: AuthorizedUserUsecase {
     private let store = Store.shard
         
     func getAuthorizedUser() async throws -> UserEntity? {

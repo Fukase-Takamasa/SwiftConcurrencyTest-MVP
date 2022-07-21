@@ -23,8 +23,8 @@ class ArticleDetailRouter {
     static func assembleModules() -> ArticleDetailViewController {
         let view = ArticleDetailViewController.instantiate()
         let router = ArticleDetailRouter(viewController: view)
-        let interector = ArticleInterector()
-        let presenter = ArticleDetailPresenter(view: view, router: router, articleInterector: interector)
+        let interactor = ArticleInteractor()
+        let presenter = ArticleDetailPresenter(view: view, router: router, articleInteractor: interactor)
         
         view.presenter = presenter
         return view

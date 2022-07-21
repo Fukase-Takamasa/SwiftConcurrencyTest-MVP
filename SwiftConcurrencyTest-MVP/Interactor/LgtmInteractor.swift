@@ -1,5 +1,5 @@
 //
-//  LgtmInterector.swift
+//  LgtmInteractor.swift
 //  SwiftConcurrencyTest-MVP
 //
 //  Created by ウルトラ深瀬 on 15/7/22.
@@ -14,7 +14,7 @@ protocol LgtmUsecase: AnyObject {
     func getLgtmUsersOfEachArticles(articles: [ArticleEntity]) async throws -> [LgtmUsersModel]?
 }
 
-final class LgtmInterector: LgtmUsecase {
+final class LgtmInteractor: LgtmUsecase {
     private let store = Store.shard
     
     func getLgtmUsers(articleId: String) async throws -> [LgtmEntity]? {

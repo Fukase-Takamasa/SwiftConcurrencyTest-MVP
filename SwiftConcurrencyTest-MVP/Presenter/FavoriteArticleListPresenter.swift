@@ -18,16 +18,16 @@ protocol FavoriteArticleListPresentation: AnyObject {
 class FavoriteArticleListPresenter {
     private weak var view: FavoriteArticleListView?
     private let router: FavoriteArticleListWireframe
-    private let articleInterector: ArticleUsecase
+    private let articleInteractor: ArticleUsecase
     
     private var cancellables = [AnyCancellable]()
     
     init(view: FavoriteArticleListView,
          router: FavoriteArticleListWireframe,
-         articleInterector: ArticleUsecase) {
+         articleInteractor: ArticleUsecase) {
         self.view = view
         self.router = router
-        self.articleInterector = articleInterector
+        self.articleInteractor = articleInteractor
     }
     
 }
@@ -53,11 +53,11 @@ extension FavoriteArticleListPresenter: FavoriteArticleListPresentation {
         
         if isFavoriteArticle {
             //既にListに存在するので削除
-            articleInterector.removeFavoriteArticle(article: article)
+            articleInteractor.removeFavoriteArticle(article: article)
             
         }else {
             //まだListに存在しないので追加
-            articleInterector.addFavoriteArticle(article: article)
+            articleInteractor.addFavoriteArticle(article: article)
         }
         
         //ViewにtableViewの再描画をさせる

@@ -24,8 +24,8 @@ class MainTabBarRouter {
     static func assembleModules() -> UITabBarController {
         let view = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! MainTabBarController
         let router = MainTabBarRouter(tabBarViewController: view)
-        let interector = AuthorizedUserInterector()
-        let presenter = MainTabBarPresenter(view: view, router: router, authorizedUserInterector: interector)
+        let interactor = AuthorizedUserInteractor()
+        let presenter = MainTabBarPresenter(view: view, router: router, authorizedUserInteractor: interactor)
         
         view.presenter = presenter
         return view
