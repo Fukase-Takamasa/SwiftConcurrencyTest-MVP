@@ -6,8 +6,8 @@
 //
 
 import XCTest
-@testable import SwiftConcurrencyTest_MVP
 import Combine
+@testable import SwiftConcurrencyTest_MVP
 
 class SwiftConcurrencyTest_MVPTests: XCTestCase {
 
