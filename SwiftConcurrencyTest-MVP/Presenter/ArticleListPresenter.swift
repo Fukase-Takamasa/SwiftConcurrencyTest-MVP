@@ -50,7 +50,12 @@ extension ArticleListPresenter: ArticleListPresentation {
             self.view?.handleLoadingIndicator(isFetching: false)
 
             //取得した各記事のLGTMユーザーリストを非同期で並行取得依頼
-            let lgtmUsersModels = try await self.lgtmInteractor.getLgtmUsersOfEachArticles(articles: articles)
+            let lgtmUsersModels = try await self.lgtmInteractor
+                .getLgtmUsersOfEachArticles(
+                    articles: articles,
+                    getLgtmUsers: { articleId in
+                        try await self.lgtmInteractor.getLgtmUsers(articleId: articleId)
+                    })
 
             guard let lgtmUsersModels = lgtmUsersModels else { return }
 
