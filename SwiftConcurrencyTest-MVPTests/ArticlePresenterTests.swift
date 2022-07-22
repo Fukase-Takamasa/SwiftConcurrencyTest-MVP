@@ -1,5 +1,5 @@
 //
-//  ArticleInteractorTests.swift
+//  ArticlePresenterTests.swift
 //  SwiftConcurrencyTest-MVPTests
 //
 //  Created by ウルトラ深瀬 on 21/7/22.
@@ -58,7 +58,12 @@ class ArticlePresenterTests: XCTestCase {
         XCTAssertEqual(view.isLoading, false)
         
         //取得した各記事のLGTMユーザーリストを非同期で並行取得依頼
-        let lgtmUsersModels = try await self.lgtmInteractor.getLgtmUsersOfEachArticles(articles: articles)
+        let lgtmUsersModels = try await self.lgtmInteractor
+            .getLgtmUsersOfEachArticles(
+                articles: articles,
+                getLgtmUsers: { articleId in
+                    try await self.lgtmInteractor.getLgtmUsers(articleId: articleId)
+                })
         
         guard let lgtmUsersModels = lgtmUsersModels else {
             XCTFail("lgtmInteractor.getLgtmUsersOfEachArticlesの結果がnilです")
@@ -106,36 +111,22 @@ class ArticleListRouterMock: ArticleListWireframe {
 
 class ArticleInteractorMock: ArticleUsecase {
     func getPopularIosArticles() async throws -> [ArticleEntity]? {
-        let userEntityMock = UserEntity(
-            name: "testName",
-            id: "testId",
-            description: "testDescription",
-            location: "testLocation",
-            profileImageUrl: "testUrl")
-        
-        let articleEntityMock = ArticleEntity(
-            id: "testId",
-            title: "testTitle",
-            url: "testUrl",
-            user: userEntityMock,
-            likesCount: 0)
-        
         // Delay the task by 1 second:
         print("今から1秒かかる処理をします")
         do {
             try await Task.sleep(nanoseconds: 1_000_000_000)
             print("1秒かかる処理成功")
             return [
-                articleEntityMock,
-                articleEntityMock,
-                articleEntityMock,
-                articleEntityMock,
-                articleEntityMock,
-                articleEntityMock,
-                articleEntityMock,
-                articleEntityMock,
-                articleEntityMock,
-                articleEntityMock,
+                MockEntites.articleEntityMock,
+                MockEntites.articleEntityMock,
+                MockEntites.articleEntityMock,
+                MockEntites.articleEntityMock,
+                MockEntites.articleEntityMock,
+                MockEntites.articleEntityMock,
+                MockEntites.articleEntityMock,
+                MockEntites.articleEntityMock,
+                MockEntites.articleEntityMock,
+                MockEntites.articleEntityMock,
             ]
         }catch {
             print("1秒かかる処理error: \(error)")
@@ -154,28 +145,22 @@ class ArticleInteractorMock: ArticleUsecase {
 
 class LgtmInteractorMock: LgtmUsecase {
     func getLgtmUsers(articleId: String) async throws -> [LgtmEntity]? {
-        let userEntityMock = UserEntity(
-            name: "testName",
-            id: "testId",
-            description: "testDescription",
-            location: "testLocation",
-            profileImageUrl: "testUrl")
-        
-        let lgtmEntityMock = LgtmEntity(createdAt: "testCreatedAt", user: userEntityMock)
-        
         // Delay the task by 1.5 second:
         print("今から1.5秒かかる処理をします")
         do {
             try await Task.sleep(nanoseconds: 1_500_000_000)
             print("1.5秒かかる処理成功")
-            return [lgtmEntityMock]
+            return [MockEntites.lgtmEntityMock]
         }catch {
             print("1.5秒かかる処理error: \(error)")
             return nil
         }
     }
     
-    func getLgtmUsersOfEachArticles(articles: [ArticleEntity]) async throws -> [LgtmUsersModel]? {
+    func getLgtmUsersOfEachArticles(
+        articles: [ArticleEntity],
+        getLgtmUsers: @escaping ((_ articleId: String) async throws -> [LgtmEntity]?)
+    ) async throws -> [LgtmUsersModel]? {
         try await withThrowingTaskGroup(of: (LgtmUsersModel).self, body: { group in
             for (articleId, likesCount) in articles.map({ ($0.id, $0.likesCount) }) {
                 group.addTask {
