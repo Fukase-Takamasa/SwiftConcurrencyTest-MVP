@@ -11,7 +11,10 @@ import Alamofire
 
 protocol LgtmUsecase: AnyObject {
     func getLgtmUsers(articleId: String) async throws -> [LgtmEntity]?
-    func getLgtmUsersOfEachArticles(articles: [ArticleEntity]) async throws -> [LgtmUsersModel]?
+    func getLgtmUsersOfEachArticles(
+        articles: [ArticleEntity],
+        getLgtmUsers: @escaping ((_ articleId: String) async throws -> [LgtmEntity]?)
+    ) async throws -> [LgtmUsersModel]?
 }
 
 final class LgtmInteractor: LgtmUsecase {
@@ -46,11 +49,14 @@ final class LgtmInteractor: LgtmUsecase {
     }
     
     //一覧記事それぞれに紐づくLGTMユーザーリストを並行取得する（可変個数TaskでのTask.group並行処理）
-    func getLgtmUsersOfEachArticles(articles: [ArticleEntity]) async throws -> [LgtmUsersModel]? {
+    func getLgtmUsersOfEachArticles(
+        articles: [ArticleEntity],
+        getLgtmUsers: @escaping ((_ articleId: String) async throws -> [LgtmEntity]?)
+    ) async throws -> [LgtmUsersModel]? {
         try await withThrowingTaskGroup(of: (LgtmUsersModel).self, body: { group in
             for (articleId, likesCount) in articles.map({ ($0.id, $0.likesCount) }) {
                 group.addTask {
-                    let lgtmUsers = try await self.getLgtmUsers(articleId: articleId) ?? []
+                    let lgtmUsers = try await getLgtmUsers(articleId) ?? []
                     //必要なキーを足した独自のModel構造体に差し替えて返却
                     return LgtmUsersModel(
                         articleId: articleId,
