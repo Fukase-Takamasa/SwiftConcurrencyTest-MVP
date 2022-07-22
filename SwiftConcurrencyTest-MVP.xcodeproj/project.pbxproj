@@ -29,6 +29,7 @@
 		BC1C2DB6288142C5001CBFB5 /* FavoriteArticleListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DB5288142C5001CBFB5 /* FavoriteArticleListRouter.swift */; };
 		BC1C2DBA28818875001CBFB5 /* MainTabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DB928818875001CBFB5 /* MainTabBarRouter.swift */; };
 		BC1C2DBC28818889001CBFB5 /* MainTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1C2DBB28818889001CBFB5 /* MainTabBarPresenter.swift */; };
+		BC2D0B86288A85CE002E89E7 /* AlamofireStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2D0B85288A85CE002E89E7 /* AlamofireStub.swift */; };
 		BC56AF1B287D99900037AA07 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BC56AF1A287D99900037AA07 /* Alamofire */; };
 		BC56AF1E287D99C20037AA07 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BC56AF1D287D99C20037AA07 /* CombineCocoa */; };
 		BC56AF21287D99FB0037AA07 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = BC56AF20287D99FB0037AA07 /* SkeletonView */; };
@@ -63,6 +64,8 @@
 		BCCA1C832872C08E006B3493 /* SwiftConcurrencyTest_MVPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA1C822872C08E006B3493 /* SwiftConcurrencyTest_MVPUITests.swift */; };
 		BCCA1C852872C08E006B3493 /* SwiftConcurrencyTest_MVPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA1C842872C08E006B3493 /* SwiftConcurrencyTest_MVPUITestsLaunchTests.swift */; };
 		BCCBDFE22889675000D8BA31 /* ArticleListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCBDFE12889675000D8BA31 /* ArticleListUtil.swift */; };
+		BCCBDFE62889794400D8BA31 /* ArticleInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCBDFE52889794400D8BA31 /* ArticleInteractorTests.swift */; };
+		BCCBDFE92889827600D8BA31 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCBDFE82889827600D8BA31 /* MockURLProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +108,7 @@
 		BC1C2DB5288142C5001CBFB5 /* FavoriteArticleListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteArticleListRouter.swift; sourceTree = "<group>"; };
 		BC1C2DB928818875001CBFB5 /* MainTabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarRouter.swift; sourceTree = "<group>"; };
 		BC1C2DBB28818889001CBFB5 /* MainTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarPresenter.swift; sourceTree = "<group>"; };
+		BC2D0B85288A85CE002E89E7 /* AlamofireStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireStub.swift; sourceTree = "<group>"; };
 		BC6CFCC128783F9A00441CA8 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		BC6CFCC328784EDC00441CA8 /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 		BC6CFCC528784EFF00441CA8 /* ArticleListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticleListViewController.storyboard; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 		BCCA1C822872C08E006B3493 /* SwiftConcurrencyTest_MVPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftConcurrencyTest_MVPUITests.swift; sourceTree = "<group>"; };
 		BCCA1C842872C08E006B3493 /* SwiftConcurrencyTest_MVPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftConcurrencyTest_MVPUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BCCBDFE12889675000D8BA31 /* ArticleListUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListUtil.swift; sourceTree = "<group>"; };
+		BCCBDFE52889794400D8BA31 /* ArticleInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleInteractorTests.swift; sourceTree = "<group>"; };
+		BCCBDFE82889827600D8BA31 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +390,9 @@
 			isa = PBXGroup;
 			children = (
 				BCCA1C782872C08E006B3493 /* SwiftConcurrencyTest_MVPTests.swift */,
+				BCCBDFE52889794400D8BA31 /* ArticleInteractorTests.swift */,
+				BCCBDFE82889827600D8BA31 /* MockURLProtocol.swift */,
+				BC2D0B85288A85CE002E89E7 /* AlamofireStub.swift */,
 			);
 			path = "SwiftConcurrencyTest-MVPTests";
 			sourceTree = "<group>";
@@ -596,7 +605,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC2D0B86288A85CE002E89E7 /* AlamofireStub.swift in Sources */,
+				BCCBDFE92889827600D8BA31 /* MockURLProtocol.swift in Sources */,
 				BCCA1C792872C08E006B3493 /* SwiftConcurrencyTest_MVPTests.swift in Sources */,
+				BCCBDFE62889794400D8BA31 /* ArticleInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
